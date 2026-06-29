@@ -360,7 +360,7 @@ export default function Home() {
                   colors={['#B5B9F0', '#408175', '#c6ffd0', '#B5B9F0']}
                   duration={1.2}
                   delay={0.3 + catIdx * 0.2}
-                  className="group-hover:opacity-80 transition-opacity duration-300"
+                  className="group-hover:opacity-80 transition-opacity duration-300 pr-2 md:pr-4"
                 />
                 <span className="absolute left-0 bottom-0 w-0 h-[4px] bg-[#B5B9F0] group-hover:w-full transition-all duration-500"></span>
               </a>
