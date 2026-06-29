@@ -11,6 +11,8 @@ export default function Home() {
   const [activeCategory, setActiveCategory] = useState<Category | null>(null);
   const [contactOpen, setContactOpen] = useState(false);
 
+  const activeIndex = activeCategory ? categories.indexOf(activeCategory) : -1;
+
   // Sync category state with URL Hash for robust routing (back button, deep link support)
   useEffect(() => {
     const handleHashChange = () => {
@@ -57,13 +59,8 @@ export default function Home() {
             { label: 'LinkedIn', link: 'https://linkedin.com' }
           ]}
           logoUrl="" // Empty string renders text fallback inside component
+          onContactClick={() => setContactOpen(true)}
         />
-        <button 
-          onClick={() => setContactOpen(true)}
-          className="absolute top-[24px] right-[85px] z-45 px-3 py-1.5 border border-[#B5B9F0] text-[10px] font-mono uppercase tracking-widest text-[#B5B9F0] bg-[#0B0909] hover:bg-[#B5B9F0] hover:text-[#0B0909] transition-all duration-300"
-        >
-          Contact
-        </button>
       </div>
 
       {/* Left Panel - Bio (Desktop Only) */}
@@ -105,7 +102,13 @@ export default function Home() {
         <div className="hidden md:flex justify-between items-center w-full">
           <span className="text-lg font-black tracking-widest text-[#B5B9F0]">// MICHAEL</span>
           <div className="flex items-center gap-6">
-            <GooeyNav items={navItems} />
+            <GooeyNav 
+              items={navItems} 
+              activeIndex={activeIndex}
+              onChange={(index) => {
+                window.location.hash = categories[index].toLowerCase();
+              }}
+            />
             <button 
               onClick={() => setContactOpen(true)}
               className="px-6 py-2 border border-[#B5B9F0] text-xs font-mono uppercase tracking-widest text-[#B5B9F0] hover:bg-[#B5B9F0] hover:text-[#0B0909] transition-all duration-300 rounded-none cursor-pointer"
@@ -138,7 +141,7 @@ export default function Home() {
               <a 
                 key={category}
                 href={`#${category.toLowerCase()}`}
-                className="group relative inline-block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter uppercase text-[#2E4540] hover:text-[#B5B9F0] transition-colors duration-500 leading-none"
+                className="group relative inline-block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter uppercase text-[#408175] hover:text-[#B5B9F0] transition-colors duration-500 leading-none"
               >
                 <span className="relative z-10">{category}</span>
                 <span className="absolute left-0 bottom-0 w-0 h-[4px] bg-[#B5B9F0] group-hover:w-full transition-all duration-500"></span>

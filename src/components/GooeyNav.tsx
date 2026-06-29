@@ -17,21 +17,33 @@ export interface GooeyNavProps {
   initialActiveIndex?: number;
 }
 
+export interface GooeyNavProps {
+  items: GooeyNavItem[];
+  activeIndex: number;
+  onChange: (index: number) => void;
+  animationTime?: number;
+  particleCount?: number;
+  particleDistances?: [number, number];
+  particleR?: number;
+  timeVariance?: number;
+  colors?: number[];
+}
+
 export const GooeyNav: React.FC<GooeyNavProps> = ({
   items,
+  activeIndex,
+  onChange,
   animationTime = 600,
   particleCount = 15,
   particleDistances = [90, 10],
   particleR = 100,
   timeVariance = 300,
-  colors = [1, 2, 3, 1, 2, 3, 1, 4],
-  initialActiveIndex = 0
+  colors = [1, 2, 3, 1, 2, 3, 1, 4]
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLUListElement>(null);
   const filterRef = useRef<HTMLSpanElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
-  const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
 
   const noise = (n = 1) => n / 2 - Math.random() * n;
 
@@ -114,7 +126,7 @@ export const GooeyNav: React.FC<GooeyNavProps> = ({
     const liEl = aEl.parentElement;
     if (!liEl || activeIndex === index) return;
 
-    setActiveIndex(index);
+    onChange(index);
     updateEffectPosition(liEl);
 
     if (filterRef.current) {
@@ -146,7 +158,7 @@ export const GooeyNav: React.FC<GooeyNavProps> = ({
       const aEl = e.currentTarget;
       const liEl = aEl.parentElement;
       if (liEl && activeIndex !== index) {
-        setActiveIndex(index);
+        onChange(index);
         updateEffectPosition(liEl);
 
         if (filterRef.current) {
@@ -172,6 +184,19 @@ export const GooeyNav: React.FC<GooeyNavProps> = ({
 
   useEffect(() => {
     if (!navRef.current || !containerRef.current) return;
+
+    if (activeIndex === -1) {
+      if (filterRef.current) filterRef.current.style.opacity = '0';
+      if (textRef.current) {
+        textRef.current.style.opacity = '0';
+        textRef.current.classList.remove('active');
+      }
+      return;
+    }
+
+    if (filterRef.current) filterRef.current.style.opacity = '1';
+    if (textRef.current) textRef.current.style.opacity = '1';
+
     const activeLi = navRef.current.querySelectorAll('li')[activeIndex];
     if (activeLi) {
       updateEffectPosition(activeLi);
