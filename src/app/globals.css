@@ -49,57 +49,57 @@
 }
 
 :root {
-  --background: hsl(0 10% 4%);         /* #0B0909 - Rich Charcoal Black */
-  --foreground: hsl(236 67% 83%);      /* #B5B9F0 - Illuminating Lavender Periwinkle */
+  --background: hsl(0 0% 0%);          /* #000000 - Pure Black */
+  --foreground: hsl(0 0% 93%);         /* #EEEEEE - Very Light Grey */
   
-  --card: hsl(167 20% 12%);            
-  --card-foreground: hsl(236 67% 83%); 
-  --popover: hsl(0 10% 4%);            
-  --popover-foreground: hsl(236 67% 83%);
+  --card: hsl(0 0% 8%);                /* #141414 - Slightly lighter black for cards */
+  --card-foreground: hsl(0 0% 93%); 
+  --popover: hsl(0 0% 0%);            
+  --popover-foreground: hsl(0 0% 93%);
   
-  --primary: hsl(236 67% 83%);         /* #B5B9F0 - Periwinkle text / structural focus */
-  --primary-foreground: hsl(0 10% 4%); 
+  --primary: hsl(0 0% 93%);            /* #EEEEEE */
+  --primary-foreground: hsl(0 0% 0%); 
   
-  --secondary: hsl(167 20% 23%);       /* #2E4540 - Dark Forest Green / Deep Teal */
-  --secondary-foreground: hsl(236 67% 83%);
+  --secondary: hsl(0 0% 87%);          /* #DDDDDD - Light Grey */
+  --secondary-foreground: hsl(0 0% 0%);
   
-  --muted: hsl(167 20% 16%);           
-  --muted-foreground: hsl(169 15% 65%);
+  --muted: hsl(0 0% 12%);              /* #1F1F1F */
+  --muted-foreground: hsl(0 0% 70%);   /* Muted Grey */
   
-  --accent: hsl(169 34% 38%);          /* #408175 - Vibrant Sage / Deep Teal Accent */
-  --accent-foreground: hsl(236 67% 83%);
+  --accent: hsl(343 76% 48%);          /* #CB2957 - Crimson Red */
+  --accent-foreground: hsl(0 0% 93%);
   
-  --border: hsl(167 20% 23%);          /* #2E4540 - Framing lines */
-  --input: hsl(167 20% 23%);           
-  --ring: hsl(169 34% 38%);            
+  --border: hsl(0 0% 87%);             /* #DDDDDD - Light Grey borders */
+  --input: hsl(0 0% 87%);           
+  --ring: hsl(343 76% 48%);            
   
-  --radius: 0rem;                 /* Brutalist, sharp 90-degree layout corners */
+  --radius: 0rem;
 
   /* Gooey Nav Colors */
-  --color-1: hsl(236 67% 83%);
-  --color-2: hsl(169 34% 38%);
-  --color-3: hsl(167 20% 23%);
-  --color-4: hsl(169 15% 65%);
+  --color-1: hsl(0 0% 93%);
+  --color-2: hsl(343 76% 48%);
+  --color-3: hsl(0 0% 87%);
+  --color-4: hsl(0 0% 70%);
 }
 
 .dark {
-  --background: hsl(0 10% 4%);
-  --foreground: hsl(236 67% 83%);
-  --card: hsl(167 20% 12%);
-  --card-foreground: hsl(236 67% 83%);
-  --popover: hsl(0 10% 4%);
-  --popover-foreground: hsl(236 67% 83%);
-  --primary: hsl(236 67% 83%);
-  --primary-foreground: hsl(0 10% 4%);
-  --secondary: hsl(167 20% 23%);
-  --secondary-foreground: hsl(236 67% 83%);
-  --muted: hsl(167 20% 16%);
-  --muted-foreground: hsl(169 15% 65%);
-  --accent: hsl(169 34% 38%);
-  --accent-foreground: hsl(236 67% 83%);
-  --border: hsl(167 20% 23%);
-  --input: hsl(167 20% 23%);
-  --ring: hsl(169 34% 38%);
+  --background: hsl(0 0% 0%);
+  --foreground: hsl(0 0% 93%);
+  --card: hsl(0 0% 8%);
+  --card-foreground: hsl(0 0% 93%);
+  --popover: hsl(0 0% 0%);
+  --popover-foreground: hsl(0 0% 93%);
+  --primary: hsl(0 0% 93%);
+  --primary-foreground: hsl(0 0% 0%);
+  --secondary: hsl(0 0% 87%);
+  --secondary-foreground: hsl(0 0% 0%);
+  --muted: hsl(0 0% 12%);
+  --muted-foreground: hsl(0 0% 70%);
+  --accent: hsl(343 76% 48%);
+  --accent-foreground: hsl(0 0% 93%);
+  --border: hsl(0 0% 87%);
+  --input: hsl(0 0% 87%);
+  --ring: hsl(343 76% 48%);
 }
 
 @layer base {

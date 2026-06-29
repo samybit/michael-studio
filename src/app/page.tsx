@@ -168,13 +168,13 @@ export default function Home() {
   }));
 
   return (
-    <main className="w-full h-dvh overflow-hidden flex flex-col md:flex-row relative bg-[#0B0909] text-[#B5B9F0] font-sans">
+    <main className="w-full h-dvh overflow-hidden flex flex-col md:flex-row relative bg-background text-foreground font-sans">
       {/* Side Rays Background */}
       <div className="absolute inset-0 pointer-events-none z-0 opacity-40">
         <SideRays
           speed={1.5}
-          rayColor1="#B5B9F0"
-          rayColor2="#408175"
+          rayColor1="#EEEEEE"
+          rayColor2="#CB2957"
           intensity={2.8}
           spread={3.5}
           origin="top-right"
@@ -187,12 +187,12 @@ export default function Home() {
       </div>
 
       {/* Mobile Navbar Block (StaggeredMenu) */}
-      <div className="md:hidden w-full h-[80px] shrink-0 relative z-40 bg-[#0B0909]">
+      <div className="md:hidden w-full h-[80px] shrink-0 relative z-40 bg-background">
         <StaggeredMenu
           isFixed={true}
           position="right"
-          accentColor="hsl(236 67% 83%)"
-          colors={['hsl(167 20% 12%)', 'hsl(167 20% 23%)']}
+          accentColor="#CB2957"
+          colors={['#000000', '#141414']}
           items={menuItems}
           socialItems={[
             { label: 'Insta', link: 'https://instagram.com/mickel_medhat' },
@@ -204,9 +204,9 @@ export default function Home() {
       </div>
 
       {/* Left Panel - Bio (Desktop Only) */}
-      <div className="hidden md:flex w-full md:w-[40%] h-full flex-col justify-between p-12 border-r border-[#2E4540] overflow-hidden shrink-0 select-none">
+      <div className="hidden md:flex w-full md:w-[40%] h-full flex-col justify-between p-12 border-r border-border overflow-hidden shrink-0 select-none">
         <div className="flex flex-col gap-8">
-          <div className="border border-[#2E4540] p-1 bg-[#167 20% 12%]">
+          <div className="border border-border p-1 bg-card">
             <div className="w-full h-[280px] relative overflow-hidden">
               <SafeImage
                 src="/profile_photo.jpeg"
@@ -218,17 +218,17 @@ export default function Home() {
             </div>
           </div>
           <div className="flex flex-col gap-2">
-            <span className="text-[#408175] text-xs font-mono uppercase tracking-widest">// STUDIO FOCUS</span>
-            <h1 className="text-4xl font-black tracking-tighter text-[#B5B9F0] uppercase leading-none">
+            <span className="text-accent text-xs font-mono uppercase tracking-widest">// STUDIO FOCUS</span>
+            <h1 className="text-4xl font-black tracking-tighter text-foreground uppercase leading-none">
               Michael Medhat
             </h1>
-            <div className="flex flex-col gap-1 mt-2 text-xs font-mono text-[#169 15% 65%]">
+            <div className="flex flex-col gap-1 mt-2 text-xs font-mono text-muted-foreground">
               <p><VerticalCutReveal staggerDuration={0.04} splitBy="characters">• SPATIAL DIRECTOR</VerticalCutReveal></p>
               <p><VerticalCutReveal staggerDuration={0.04} splitBy="characters" transition={{ type: 'spring', stiffness: 190, damping: 22, delay: 0.25 }}>• STRUCTURAL SCHEMES</VerticalCutReveal></p>
               <p><VerticalCutReveal staggerDuration={0.04} splitBy="characters" transition={{ type: 'spring', stiffness: 190, damping: 22, delay: 0.5 }}>• BRUTALIST ORCHESTRATIONS</VerticalCutReveal></p>
             </div>
           </div>
-          <p className="text-[#169 15% 65%] text-sm leading-relaxed max-w-sm">
+          <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
             <VerticalCutReveal splitBy="words" staggerDuration={0.06} transition={{ type: 'spring', stiffness: 160, damping: 22, delay: 0.6 }}>
               Crafting architectural statements that fuse raw structural honesty with refined details. Transforming domestic spaces into curated spatial experiences.
             </VerticalCutReveal>
@@ -236,7 +236,7 @@ export default function Home() {
         </div>
 
         {/* Footer (Left-pinned metadata) */}
-        <div className="text-[10px] font-mono text-[#2E4540] tracking-wider uppercase">
+        <div className="text-[10px] font-mono text-muted-foreground/60 tracking-wider uppercase">
           © 2026 Michael Medhat. All Rights Reserved.
         </div>
       </div>
@@ -246,7 +246,7 @@ export default function Home() {
 
         {/* Desktop Navbar (GooeyNav) */}
         <div className="hidden md:flex justify-between items-center w-full">
-          <span className="text-lg font-black tracking-widest text-[#B5B9F0]">// Michael</span>
+          <span className="text-lg font-black tracking-widest text-foreground">// Michael</span>
           <div className="flex items-center gap-6">
             <GooeyNav
               items={navItems}
@@ -257,7 +257,7 @@ export default function Home() {
             />
             <button
               onClick={() => setContactOpen(true)}
-              className="px-6 py-2 border border-[#B5B9F0] text-xs font-mono uppercase tracking-widest text-[#B5B9F0] hover:bg-[#B5B9F0] hover:text-[#0B0909] transition-all duration-300 rounded-none cursor-pointer"
+              className="px-6 py-2 border border-foreground text-xs font-mono uppercase tracking-widest text-foreground hover:bg-foreground hover:text-background transition-all duration-300 rounded-none cursor-pointer"
             >
               Contact
             </button>
@@ -265,23 +265,23 @@ export default function Home() {
         </div>
 
         {/* Compact Profile Block (Mobile Only) */}
-        <div className="flex flex-col gap-2 md:hidden p-1 border-b border-[#2E4540]/30 pb-4 shrink-0 select-none">
+        <div className="flex flex-col gap-2 md:hidden p-1 border-b border-border/30 pb-4 shrink-0 select-none">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 relative overflow-hidden shrink-0">
               <SafeImage
                 src="/profile_photo.jpeg"
                 alt="Michael Medhat"
-                className="w-full h-full object-cover border border-[#2E4540] grayscale"
+                className="w-full h-full object-cover border border-border grayscale"
                 type="person"
                 fallbackText="pending"
               />
             </div>
             <div>
-              <h2 className="text-xs font-mono font-bold tracking-widest uppercase text-[#B5B9F0]">Michael Medhat</h2>
-              <p className="text-[10px] text-[#169 15% 65%]">Lead Spatial Architect</p>
+              <h2 className="text-xs font-mono font-bold tracking-widest uppercase text-foreground">Michael Medhat</h2>
+              <p className="text-[10px] text-muted-foreground">Lead Spatial Architect</p>
             </div>
           </div>
-          <p className="text-[11px] leading-relaxed text-[#169 15% 65%] mt-1">
+          <p className="text-[11px] leading-relaxed text-muted-foreground mt-1">
             <VerticalCutReveal splitBy="words" staggerDuration={0.05} transition={{ type: 'spring', stiffness: 170, damping: 22, delay: 0.3 }}>
               Crafting architectural statements that fuse raw structural honesty with refined details.
             </VerticalCutReveal>
@@ -290,7 +290,7 @@ export default function Home() {
 
         {/* Dynamic Center Arena (Massive Category Links) */}
         <div className="flex-1 flex flex-col justify-center gap-6 md:gap-8">
-          <div className="text-[10px] font-mono text-[#408175] tracking-widest uppercase mb-1">
+          <div className="text-[10px] font-mono text-accent tracking-widest uppercase mb-1">
             // SELECT PORTFOLIO
           </div>
           <nav className="flex flex-col gap-2 md:gap-4">
@@ -302,20 +302,20 @@ export default function Home() {
               >
                 <DiaTextReveal
                   text={category}
-                  textColor="#408175"
-                  colors={['#B5B9F0', '#408175', '#c6ffd0', '#B5B9F0']}
+                  textColor="#CB2957"
+                  colors={['#EEEEEE', '#CB2957', '#DDDDDD', '#EEEEEE']}
                   duration={1.2}
                   delay={0.3 + catIdx * 0.2}
                   className="group-hover:opacity-80 transition-opacity duration-300 pr-2 md:pr-4"
                 />
-                <span className="absolute left-0 bottom-0 w-0 h-[4px] bg-[#B5B9F0] group-hover:w-full transition-all duration-500"></span>
+                <span className="absolute left-0 bottom-0 w-0 h-[4px] bg-foreground group-hover:w-full transition-all duration-500"></span>
               </a>
             ))}
           </nav>
         </div>
 
         {/* Footer (Mobile/Desktop credits) */}
-        <div className="flex justify-between items-center text-[10px] font-mono text-[#2E4540] tracking-wider shrink-0 select-none border-t border-[#2E4540]/30 pt-4">
+        <div className="flex justify-between items-center text-[10px] font-mono text-muted-foreground/60 tracking-wider shrink-0 select-none border-t border-border/30 pt-4">
           <span className="md:hidden">© 2026 Michael Medhat</span>
           <span>SPATIAL DESIGN SHOWCASE</span>
 
@@ -325,7 +325,7 @@ export default function Home() {
               href="https://instagram.com/mickel_medhat"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 flex items-center justify-center border border-[#2E4540] hover:border-[#B5B9F0] text-[#408175] hover:text-[#B5B9F0] bg-[#0d0d0d] transition-all duration-300 pointer-events-auto"
+              className="w-8 h-8 flex items-center justify-center border border-border hover:border-foreground text-accent hover:text-foreground bg-card transition-all duration-300 pointer-events-auto"
               title="Instagram"
             >
               <InstagramIcon size={14} />
@@ -334,7 +334,7 @@ export default function Home() {
               href="https://behance.net"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 flex items-center justify-center border border-[#2E4540] hover:border-[#B5B9F0] text-[#408175] hover:text-[#B5B9F0] bg-[#0d0d0d] transition-all duration-300 pointer-events-auto"
+              className="w-8 h-8 flex items-center justify-center border border-border hover:border-foreground text-accent hover:text-foreground bg-card transition-all duration-300 pointer-events-auto"
               title="Behance"
             >
               <BehanceIcon size={14} />
@@ -345,25 +345,25 @@ export default function Home() {
 
       {/* Category Full Takeover Project View */}
       {activeCategory && (
-        <div className="fixed inset-0 z-50 bg-[#0B0909] text-[#B5B9F0] overflow-y-auto flex flex-col p-6 md:p-16 border-4 border-[#2E4540]">
+        <div className="fixed inset-0 z-50 bg-background text-foreground overflow-y-auto flex flex-col p-6 md:p-16 border-4 border-border">
           {/* Takeover Header */}
-          <div className="flex flex-col md:flex-row md:justify-between items-start md:items-center gap-6 border-b border-[#2E4540] pb-6 mb-8">
+          <div className="flex flex-col md:flex-row md:justify-between items-start md:items-center gap-6 border-b border-border pb-6 mb-8">
             <div>
-              <span className="text-xs font-mono text-[#408175] tracking-widest uppercase">// EXPLORE DESIGNS</span>
-              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-[#B5B9F0]">{activeCategory}</h2>
+              <span className="text-xs font-mono text-accent tracking-widest uppercase">// EXPLORE DESIGNS</span>
+              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-foreground">{activeCategory}</h2>
             </div>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 md:gap-8 w-full md:w-auto mt-2 sm:mt-0">
               {/* Category Switcher Navigation */}
               <nav className="flex flex-wrap items-center gap-4 md:gap-5 text-xs font-mono uppercase tracking-widest w-full sm:w-auto">
-                <span className="text-[#2E4540] hidden md:inline">// BROWSE:</span>
+                <span className="text-muted-foreground/60 hidden md:inline">// BROWSE:</span>
                 {categories.map((cat) => {
                   if (cat === activeCategory) return null;
                   return (
                     <a
                       key={cat}
                       href={`#${cat.toLowerCase()}`}
-                      className="text-[#408175] hover:text-[#B5B9F0] transition-colors duration-300 border-b border-[#2E4540] hover:border-[#B5B9F0] pb-0.5"
+                      className="text-accent hover:text-foreground transition-colors duration-300 border-b border-border hover:border-foreground pb-0.5"
                     >
                       {cat}
                     </a>
@@ -373,7 +373,7 @@ export default function Home() {
 
               <button
                 onClick={closeCategory}
-                className="w-full sm:w-auto px-5 py-2.5 border border-[#B5B9F0] bg-transparent text-xs font-mono uppercase tracking-widest text-[#B5B9F0] hover:bg-[#B5B9F0] hover:text-[#0B0909] transition-all duration-300 rounded-none cursor-pointer shrink-0"
+                className="w-full sm:w-auto px-5 py-2.5 border border-foreground bg-transparent text-xs font-mono uppercase tracking-widest text-foreground hover:bg-foreground hover:text-background transition-all duration-300 rounded-none cursor-pointer shrink-0"
               >
                 Close [X]
               </button>
@@ -391,25 +391,25 @@ export default function Home() {
 
       {/* Contact Studio Overlay */}
       {contactOpen && (
-        <div className="fixed inset-0 z-[60] bg-[#0B0909]/95 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-[#167 20% 12%] border-2 border-[#B5B9F0] p-8 max-w-md w-full relative">
+        <div className="fixed inset-0 z-[60] bg-background/95 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="bg-card border-2 border-foreground p-8 max-w-md w-full relative">
             <button
               onClick={() => setContactOpen(false)}
-              className="absolute top-4 right-4 text-xs font-mono text-[#B5B9F0] hover:text-[#408175] uppercase cursor-pointer"
+              className="absolute top-4 right-4 text-xs font-mono text-foreground hover:text-accent uppercase cursor-pointer"
             >
               [Close]
             </button>
-            <h3 className="text-2xl font-black uppercase text-[#B5B9F0] tracking-tighter mb-4">// CONTACT STUDIO</h3>
-            <div className="flex flex-col gap-4 text-sm font-mono text-[#169 15% 65%]">
+            <h3 className="text-2xl font-black uppercase text-foreground tracking-tighter mb-4">// CONTACT STUDIO</h3>
+            <div className="flex flex-col gap-4 text-sm font-mono text-muted-foreground">
               <div>
-                <span className="text-[#408175] text-xs font-bold block mb-1">EMAIL</span>
-                <a href="mailto:michael@arch.com" className="text-[#B5B9F0] hover:underline">michael@arch.com</a>
+                <span className="text-accent text-xs font-bold block mb-1">EMAIL</span>
+                <a href="mailto:michael@arch.com" className="text-foreground hover:underline">michael@arch.com</a>
               </div>
               <div>
-                <span className="text-[#408175] text-xs font-bold block mb-1">OFFICES</span>
-                <span className="text-[#B5B9F0]">Cairo / Minya</span>
+                <span className="text-accent text-xs font-bold block mb-1">OFFICES</span>
+                <span className="text-foreground">Cairo / Minya</span>
               </div>
-              <div className="border-t border-[#2E4540] pt-4 mt-2">
+              <div className="border-t border-border pt-4 mt-2">
                 <p className="text-xs">Available for selective private residential commissions.</p>
               </div>
             </div>

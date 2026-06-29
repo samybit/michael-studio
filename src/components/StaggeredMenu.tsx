@@ -506,7 +506,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                       href={s.link} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="w-10 h-10 flex items-center justify-center border border-[#2E4540] hover:border-[#B5B9F0] text-[#408175] hover:text-[#B5B9F0] bg-[#0d0d0d] transition-all duration-300 pointer-events-auto"
+                      className="w-10 h-10 flex items-center justify-center border border-border hover:border-foreground text-accent hover:text-foreground bg-card transition-all duration-300 pointer-events-auto"
                       title={s.label}
                     >
                       {s.label.toLowerCase() === 'insta' || s.label.toLowerCase() === 'instagram' ? (

@@ -132,8 +132,8 @@
   right: 0;
   width: clamp(260px, 38vw, 420px);
   height: 100%;
-  background: #0B0909;
-  border-left: 1px solid #2E4540;
+  background: #000000;
+  border-left: 1px solid #DDDDDD;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   display: flex;
@@ -270,7 +270,7 @@
 
 .sm-panel-item {
   position: relative;
-  color: #408175;
+  color: #CB2957;
   font-weight: 600;
   font-size: 2rem;
   cursor: pointer;
