@@ -9,7 +9,8 @@ export const SafeImage = ({
   className,
   type = "project",
   fallbackText = "image to be added",
-  fallbackClassName = ""
+  fallbackClassName = "",
+  fill = true
 }: {
   src: string;
   alt: string;
@@ -17,6 +18,7 @@ export const SafeImage = ({
   type?: "person" | "project";
   fallbackText?: string;
   fallbackClassName?: string;
+  fill?: boolean;
 }) => {
   const [error, setError] = useState(false);
 
@@ -48,7 +50,7 @@ export const SafeImage = ({
     }
 
     return (
-      <div className={`flex items-center justify-center bg-[#0d0d0d] border border-[#2E4540]/50 p-2 text-center select-none ${className} ${fallbackClassName}`}>
+      <div className={`flex items-center justify-center bg-[#0d0d0d] border border-[#2E4540]/50 p-2 text-center select-none ${className} ${fallbackClassName} ${fill ? '' : 'w-full aspect-video'}`}>
         <span className="text-[9px] font-mono text-[#408175] tracking-wider uppercase leading-tight">
           {fallbackText}
         </span>
@@ -56,11 +58,26 @@ export const SafeImage = ({
     );
   }
 
+  if (fill) {
+    return (
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className={className}
+        onError={() => setError(true)}
+      />
+    );
+  }
+
   return (
     <Image
       src={src}
       alt={alt}
-      fill
+      width={0}
+      height={0}
+      sizes="100vw"
+      style={{ width: '100%', height: 'auto' }}
       className={className}
       onError={() => setError(true)}
     />

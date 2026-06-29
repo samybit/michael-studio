@@ -84,14 +84,15 @@ export function ExpandableProjectCard({ project }: { project: Project }) {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
-                    className="w-full lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-4"
+                    className="w-full lg:w-2/3 columns-1 md:columns-2 gap-4 space-y-4"
                   >
                     {project.gallery.map((imgSrc, idx) => (
-                      <div key={idx} className="w-full aspect-square bg-[#0B0909] border border-[#2E4540] relative overflow-hidden group">
+                      <div key={idx} className="w-full bg-[#0B0909] border border-[#2E4540] relative overflow-hidden group break-inside-avoid">
                         <SafeImage
+                          fill={false}
                           src={imgSrc}
                           alt={`${project.title} gallery ${idx + 1}`}
-                          className="w-full h-full object-cover grayscale contrast-110 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700"
+                          className="w-full h-auto grayscale contrast-110 group-hover:grayscale-0 transition-all duration-700"
                         />
                         <div className="absolute top-2 left-2 px-2 py-1 bg-[#0B0909]/80 border border-[#2E4540] text-[9px] font-mono text-[#408175] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
                           View 0{idx + 1}
