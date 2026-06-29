@@ -4,6 +4,34 @@ import { useState, useEffect, useRef } from 'react';
 import StaggeredMenu from '@/components/StaggeredMenu';
 import GooeyNav from '@/components/GooeyNav';
 
+const InstagramIcon = ({ size = 16 }: { size?: number }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+  </svg>
+);
+
+const BehanceIcon = ({ size = 16 }: { size?: number }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 16 16"
+    fill="currentColor"
+  >
+    <path d="M4.654 3c.461 0 .887.035 1.278.14.39.07.711.216.996.391s.497.426.641.747c.14.32.216.711.216 1.137 0 .496-.106.922-.356 1.242-.215.32-.566.606-.997.817.606.176 1.067.496 1.348.922s.461.957.461 1.563c0 .496-.105.922-.285 1.278a2.3 2.3 0 0 1-.782.887c-.32.215-.711.39-1.137.496a5.3 5.3 0 0 1-1.278.176L0 12.803V3zm-.285 3.978c.39 0 .71-.105.957-.285.246-.18.355-.497.355-.887 0-.216-.035-.426-.105-.567a1 1 0 0 0-.32-.355 1.8 1.8 0 0 0-.461-.176c-.176-.035-.356-.035-.567-.035H2.17v2.31c0-.005 2.2-.005 2.2-.005zm.105 4.193c.215 0 .426-.035.606-.07.176-.035.356-.106.496-.216s.25-.215.356-.39c.07-.176.14-.391.14-.641 0-.496-.14-.852-.426-1.102-.285-.215-.676-.32-1.137-.32H2.17v2.734h2.305zm6.858-.035q.428.427 1.278.426c.39 0 .746-.106 1.032-.286q.426-.32.53-.64h1.74c-.286.851-.712 1.457-1.278 1.848-.566.355-1.243.566-2.06.566a4.1 4.1 0 0 1-1.527-.285 2.8 2.8 0 0 1-1.137-.782 2.85 2.85 0 0 1-.712-1.172c-.175-.461-.25-.957-.25-1.528 0-.531.07-1.032.25-1.493.18-.46.426-.852.747-1.207.32-.32.711-.606 1.137-.782a4 4 0 0 1 1.493-.285c.606 0 1.137.105 1.598.355.46.25.817.532 1.102.958.285.39.496.851.641 1.348.07.496.105.996.07 1.563h-5.15c0 .58.21 1.11.496 1.396m2.24-3.732c-.25-.25-.642-.391-1.103-.391-.32 0-.566.07-.781.176s-.356.25-.496.39a.96.96 0 0 0-.25.497c-.036.175-.07.32-.07.46h3.196c-.07-.526-.25-.882-.497-1.132zm-3.127-3.728h3.978v.957h-3.978z" />
+  </svg>
+);
+
 const categories = ['Kitchens', 'Bathrooms', 'Apartments', 'Bedrooms'] as const;
 type Category = typeof categories[number];
 
@@ -116,13 +144,13 @@ const SafeImage = ({
       return (
         <div className={`flex items-center justify-center bg-[#0d0d0d] border border-[#2E4540]/50 p-2 text-center select-none ${className} ${fallbackClassName}`}>
           <div className="w-2/3 h-2/3 max-w-[120px] aspect-square flex items-center justify-center opacity-85">
-            <svg 
-              viewBox="0 0 100 100" 
-              className="w-full h-full text-[#408175]" 
-              fill="none" 
-              stroke="currentColor" 
+            <svg
+              viewBox="0 0 100 100"
+              className="w-full h-full text-[#408175]"
+              fill="none"
+              stroke="currentColor"
               strokeWidth="1.5"
-              strokeLinecap="round" 
+              strokeLinecap="round"
               strokeLinejoin="round"
             >
               {/* Le Corbusier style glasses + turtleneck architect icon */}
@@ -206,8 +234,8 @@ export default function Home() {
           colors={['hsl(167 20% 12%)', 'hsl(167 20% 23%)']}
           items={menuItems}
           socialItems={[
-            { label: 'Insta', link: 'https://instagram.com' },
-            { label: 'LinkedIn', link: 'https://linkedin.com' }
+            { label: 'Insta', link: 'https://instagram.com/mickel_medhat' },
+            { label: 'Behance', link: 'https://behance.net' }
           ]}
           logoUrl="" // Empty string renders text fallback inside component
           onContactClick={() => setContactOpen(true)}
@@ -238,7 +266,7 @@ export default function Home() {
             </div>
           </div>
           <p className="text-[#169 15% 65%] text-sm leading-relaxed max-w-sm">
-            Crafting architectural statements that fuse raw structural honesty with refined brutalist details. Transforming domestic spaces into curated spatial experiences.
+            Crafting architectural statements that fuse raw structural honesty with refined details. Transforming domestic spaces into curated spatial experiences.
           </p>
         </div>
 
@@ -287,7 +315,7 @@ export default function Home() {
             </div>
           </div>
           <p className="text-[11px] leading-relaxed text-[#169 15% 65%] mt-1">
-            Crafting architectural statements that fuse raw structural honesty with refined brutalist details.
+            Crafting architectural statements that fuse raw structural honesty with refined details.
           </p>
         </div>
 
@@ -311,9 +339,31 @@ export default function Home() {
         </div>
 
         {/* Footer (Mobile/Desktop credits) */}
-        <div className="flex justify-between items-center text-[10px] font-mono text-[#2E4540] tracking-wider shrink-0 select-none">
+        <div className="flex justify-between items-center text-[10px] font-mono text-[#2E4540] tracking-wider shrink-0 select-none border-t border-[#2E4540]/30 pt-4">
           <span className="md:hidden">© 2026 Michael Medhat</span>
           <span>SPATIAL DESIGN SHOWCASE</span>
+
+          {/* Desktop Social Links */}
+          <div className="hidden md:flex items-center gap-3">
+            <a
+              href="https://instagram.com/mickel_medhat"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 flex items-center justify-center border border-[#2E4540] hover:border-[#B5B9F0] text-[#408175] hover:text-[#B5B9F0] bg-[#0d0d0d] transition-all duration-300 pointer-events-auto"
+              title="Instagram"
+            >
+              <InstagramIcon size={14} />
+            </a>
+            <a
+              href="https://behance.net"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 flex items-center justify-center border border-[#2E4540] hover:border-[#B5B9F0] text-[#408175] hover:text-[#B5B9F0] bg-[#0d0d0d] transition-all duration-300 pointer-events-auto"
+              title="Behance"
+            >
+              <BehanceIcon size={14} />
+            </a>
+          </div>
         </div>
       </div>
 
