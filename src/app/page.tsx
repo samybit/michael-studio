@@ -7,6 +7,83 @@ import GooeyNav from '@/components/GooeyNav';
 const categories = ['Kitchens', 'Bathrooms', 'Apartments', 'Bedrooms'] as const;
 type Category = typeof categories[number];
 
+interface Project {
+  title: string;
+  imagePath: string;
+  description: string;
+}
+
+const projectsData: Record<Category, Project[]> = {
+  Kitchens: [
+    {
+      title: "Minimalist Matte Kitchen",
+      imagePath: "/assets/projects/kitchens/minimalist-matte-01.jpg",
+      description: "A study in matte textures, integrated storage partitions, and monolithic granite workspaces."
+    },
+    {
+      title: "Monolithic Stone Kitchen",
+      imagePath: "/assets/projects/kitchens/monolithic-island-01.jpg",
+      description: "Raw marble countertops balanced with custom darkened oak panel overlays."
+    },
+    {
+      title: "Brutalist Concrete Galley",
+      imagePath: "/assets/projects/kitchens/brutalist-concrete-01.jpg",
+      description: "Cast-in-place concrete surfaces integrated with industrial steel fixtures."
+    }
+  ],
+  Bathrooms: [
+    {
+      title: "Concrete Spa Chamber",
+      imagePath: "/assets/projects/bathrooms/concrete-spa-01.jpg",
+      description: "Polished concrete walls offset by warm cedar slats and a sunken stone tub."
+    },
+    {
+      title: "Terrazzo Sanctuary",
+      imagePath: "/assets/projects/bathrooms/terrazzo-monolith-01.jpg",
+      description: "Monolithic custom terrazzo basin set against brushed stainless plumbing frameworks."
+    },
+    {
+      title: "Minimalist Wetroom",
+      imagePath: "/assets/projects/bathrooms/minimalist-wetroom-01.jpg",
+      description: "Floor-to-ceiling slate tiles with integrated rain shower apertures."
+    }
+  ],
+  Apartments: [
+    {
+      title: "Industrial Loft Apartment",
+      imagePath: "/assets/projects/apartments/industrial-loft-01.jpg",
+      description: "Exposed structural beams, double-height glazing profiles, and modular partition boundaries."
+    },
+    {
+      title: "Tribeca Residence",
+      imagePath: "/assets/projects/apartments/tribeca-residence-01.jpg",
+      description: "A high-end loft conversion highlighting clean plaster finishes and solid oak floors."
+    },
+    {
+      title: "Brutalist Flat",
+      imagePath: "/assets/projects/apartments/brutalist-flat-01.jpg",
+      description: "Textured raw concrete ceilings paired with minimalist gallery-style lighting profiles."
+    }
+  ],
+  Bedrooms: [
+    {
+      title: "Editorial Suite",
+      imagePath: "/assets/projects/bedrooms/editorial-suite-01.jpg",
+      description: "A master bedroom featuring an integrated concrete platform bed and linear shadow gaps."
+    },
+    {
+      title: "Minimalist Retreat",
+      imagePath: "/assets/projects/bedrooms/minimalist-retreat-01.jpg",
+      description: "Low-profile furnishings set against raw acoustic wood paneling contours."
+    },
+    {
+      title: "Concrete Alcove Bedroom",
+      imagePath: "/assets/projects/bedrooms/concrete-alcove-01.jpg",
+      description: "Recessed sleeping alcove formed from board-marked architectural concrete."
+    }
+  ]
+};
+
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState<Category | null>(null);
   const [contactOpen, setContactOpen] = useState(false);
@@ -68,7 +145,7 @@ export default function Home() {
         <div className="flex flex-col gap-8">
           <div className="border border-[#2E4540] p-1 bg-[#167 20% 12%]">
             <img 
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80"
+              src="/profile_photo.jpeg"
               alt="Michael"
               className="w-full h-[280px] object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-700"
             />
@@ -121,7 +198,7 @@ export default function Home() {
         {/* Compact Profile Block (Mobile Only) */}
         <div className="flex items-center gap-3 md:hidden p-1 border-b border-[#2E4540]/30 pb-4 shrink-0 select-none">
           <img 
-            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80"
+            src="/profile_photo.jpeg"
             alt="Michael"
             className="w-10 h-10 object-cover border border-[#2E4540] grayscale"
           />
@@ -176,21 +253,31 @@ export default function Home() {
 
           {/* Project Specimen Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {[1, 2, 3, 4, 5, 6].map((item) => (
-              <div key={item} className="border border-[#2E4540] p-4 bg-[#167 20% 12%] flex flex-col gap-4">
+            {projectsData[activeCategory].map((project) => (
+              <div key={project.title} className="border border-[#2E4540] p-4 bg-[#167 20% 12%] flex flex-col gap-4">
                 {/* Mock Picture Box */}
-                <div className="w-full h-64 bg-[#0B0909] border border-[#2E4540] flex items-center justify-center relative overflow-hidden group">
-                  <span className="text-xs font-mono text-[#2E4540] tracking-widest uppercase group-hover:text-[#B5B9F0] transition-colors duration-300">
-                    Mock Picture
-                  </span>
-                  <div className="absolute inset-0 bg-[#408175]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="w-full h-64 bg-[#0B0909] border border-[#2E4540] relative overflow-hidden group">
+                  <img 
+                    src={project.imagePath} 
+                    alt={project.title}
+                    className="w-full h-full object-cover grayscale contrast-110 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                    }}
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none p-4 select-none">
+                    <span className="text-xs font-mono text-[#2E4540] tracking-widest uppercase group-hover:text-[#B5B9F0] transition-colors duration-300">
+                      {project.title}
+                    </span>
+                  </div>
+                  <div className="absolute inset-0 bg-[#408175]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold tracking-tight text-[#B5B9F0] uppercase">
-                    {activeCategory.slice(0, -1)} project {item}
+                    {project.title}
                   </h3>
                   <p className="text-xs text-[#169 15% 65%] mt-1">
-                    Brutalist structural exploration highlighting geometry, volume, and material truth.
+                    {project.description}
                   </p>
                 </div>
               </div>

@@ -105,6 +105,8 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(167 20% 23%) hsl(0 10% 4%);
   }
   body {
     @apply bg-background text-foreground;
@@ -115,5 +117,21 @@
     @apply font-sans;
     height: 100dvh;
     overflow: hidden;
+  }
+  
+  /* Webkit Scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(0 10% 4%);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(167 20% 23%);
+    border-radius: 0px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(169 34% 38%);
   }
 }

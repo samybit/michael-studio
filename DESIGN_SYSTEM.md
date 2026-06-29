@@ -65,7 +65,7 @@ On mobile devices, components stack vertically within the single-screen viewport
 +-----------------------------------------------------------------------+
 |  COMPACT PROFILE BLOCK (Top / Small Avatar + Job Title Inline)        |
 +-----------------------------------------------------------------------+
-|  DYNAMIC CENTER ARENA (Massive Stacked Category Links)                 |
+|  DYNAMIC CENTER ARENA (Massive Stacked Category Links)                |
 |  - Kitchens / Bathrooms / Apartments / Bedrooms                       |
 +-----------------------------------------------------------------------+
 |  PINNED MOBILE FOOTER                                                 |
@@ -97,16 +97,49 @@ On desktop viewports, the grid splits side-by-side:
 
 When a user clicks any category (via the right pane links, mobile center arena, or navbar):
 
-The application injects a full-viewport layout takeover block (`fixed inset-0 z-50 bg-background`).
-
-This completely masks both structural panels to maximize artwork visibility.
+- The application injects a full-viewport layout takeover block (`fixed inset-0 z-50 bg-background`).
+- This completely masks both structural panels to maximize artwork visibility.
 
 **Scroll Containment Rule:** While the main site body remains locked down with `overflow-hidden`, this specific overlay component is permitted to have localized internal scrolling (`overflow-y-auto`) so the user can scroll through the project list if many works are loaded. A sharp, high-contrast "Close / Return" action element must remain persistently visible.
 
 ## 5. Agent Technical Execution Rules
 
 - **Enforce Responsive Layout Shifts:** Use flex utility classes matching a mobile-first pattern: `flex flex-col md:flex-row`.
-
 - **Explicit Sizing Controls:** Use exact panel distributions when hitting the desktop breakpoint: `w-full md:w-[40%]` for the bio panel, and `w-full md:w-[60%]` for the interactive focus area.
-
 - **Typography Scaling:** Ensure the massive category text blocks scale proportionally using standard responsive modifiers (e.g., `text-4xl sm:text-5xl md:text-7xl lg:text-8xl`), guaranteeing text remains impactful on massive screens but doesn't wrap awkwardly or cause overflow scrolling on mobile phones.
+
+## 6. Post-Execution Commit Requirements
+
+**Mandatory Output:** After performing any file edits, architecture scaffolding, or component iterations, the agent MUST append a precise Git commit message suggestion at the end of its response.
+
+**Commit Format:** Use the Conventional Commits specification. The message must be written in lowercase, starting with an active imperative verb (e.g., `feat`, `fix`, `refactor`), followed by an explicit layout or functional scope.
+
+**Format Example:**
+
+```
+### Suggested Commit Message
+feat(layout): implement mobile-first single-screen split pane
+```
+
+## 7. Production Asset & Content Quality Enforcements
+
+### Strict Prohibition of Mock Data
+
+The agent must treat this project as a high-end commercial live production site. Using placeholder keywords, arbitrary sandbox mock values, or joke asset names (such as "banana", "test-image", or "lorem ipsum") is strictly forbidden.
+
+### Production Asset Schema
+
+All simulated image locations in markup must link to clear, structured local path directories under the public folder, matching the project taxonomy schema:
+
+- `/assets/projects/kitchens/minimalist-matte-01.jpg`
+- `/assets/projects/bathrooms/concrete-spa-01.jpg`
+- `/assets/projects/apartments/industrial-loft-01.jpg`
+- `/assets/projects/bedrooms/editorial-suite-01.jpg`
+
+### High-Fidelity Testing Assets
+
+If external image assets are pulled in via URL placeholders to test render boxes or image grid containers, the agent must exclusively target high-resolution architectural photography or interior design rendering placeholders (e.g., architectural imagery platforms).
+
+### Professional Fine Arts Microcopy
+
+Any generated dummy data titles, mock descriptions, or navigation micro-copy must adopt a polished, authentic lexicon matching fine arts curation, spatial design, and architectural visualization.
