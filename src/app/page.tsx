@@ -6,6 +6,8 @@ import GooeyNav from '@/components/GooeyNav';
 import VerticalCutReveal from '@/components/fancy/text/vertical-cut-reveal';
 import { DiaTextReveal } from '@/components/magicui/dia-text-reveal';
 import SideRays from '@/components/SideRays';
+import { ExpandableProjectCard } from '@/components/ExpandableProjectCard';
+import { SafeImage } from '@/components/SafeImage';
 
 const InstagramIcon = ({ size = 16 }: { size?: number }) => (
   <svg
@@ -42,6 +44,7 @@ interface Project {
   title: string;
   imagePath: string;
   description: string;
+  gallery?: string[];
 }
 
 const projectsData: Record<Category, Project[]> = {
@@ -99,8 +102,14 @@ const projectsData: Record<Category, Project[]> = {
   Bedrooms: [
     {
       title: "Editorial Suite",
-      imagePath: "/assets/projects/bedrooms/editorial-suite-01.jpg",
-      description: "A master bedroom featuring an integrated concrete platform bed and linear shadow gaps."
+      imagePath: "/projects/bedrooms/bedroom-1/bedroom-1.jpg",
+      description: "A master bedroom featuring an integrated concrete platform bed and linear shadow gaps.",
+      gallery: [
+        "/projects/bedrooms/bedroom-1/image-1.jpg",
+        "/projects/bedrooms/bedroom-1/image-2.jpg",
+        "/projects/bedrooms/bedroom-1/image-3.jpg",
+        "/projects/bedrooms/bedroom-1/image-4.jpg"
+      ]
     },
     {
       title: "Minimalist Retreat",
@@ -115,79 +124,6 @@ const projectsData: Record<Category, Project[]> = {
   ]
 };
 
-const SafeImage = ({
-  src,
-  alt,
-  className,
-  type = "project",
-  fallbackText = "image to be added",
-  fallbackClassName = ""
-}: {
-  src: string;
-  alt: string;
-  className: string;
-  type?: "person" | "project";
-  fallbackText?: string;
-  fallbackClassName?: string;
-}) => {
-  const [error, setError] = useState(false);
-  const imgRef = useRef<HTMLImageElement>(null);
-
-  useEffect(() => {
-    const img = imgRef.current;
-    if (img) {
-      if (img.complete && img.naturalWidth === 0) {
-        setError(true);
-      }
-    }
-  }, [src]);
-
-  if (error) {
-    if (type === "person") {
-      return (
-        <div className={`flex items-center justify-center bg-[#0d0d0d] border border-[#2E4540]/50 p-2 text-center select-none ${className} ${fallbackClassName}`}>
-          <div className="w-2/3 h-2/3 max-w-[120px] aspect-square flex items-center justify-center opacity-85">
-            <svg
-              viewBox="0 0 100 100"
-              className="w-full h-full text-[#408175]"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              {/* Le Corbusier style glasses + turtleneck architect icon */}
-              <circle cx="50" cy="35" r="18" />
-              <circle cx="44" cy="35" r="5" className="stroke-[#B5B9F0]" />
-              <circle cx="56" cy="35" r="5" className="stroke-[#B5B9F0]" />
-              <line x1="49" y1="35" x2="51" y2="35" className="stroke-[#B5B9F0]" />
-              <path d="M25 80 C25 65 35 55 50 55 C65 55 75 65 75 80" />
-              <path d="M44 55 H56 V62 H44 Z" className="fill-[#0B0909]" />
-            </svg>
-          </div>
-        </div>
-      );
-    }
-
-    return (
-      <div className={`flex items-center justify-center bg-[#0d0d0d] border border-[#2E4540]/50 p-2 text-center select-none ${className} ${fallbackClassName}`}>
-        <span className="text-[9px] font-mono text-[#408175] tracking-wider uppercase leading-tight">
-          {fallbackText}
-        </span>
-      </div>
-    );
-  }
-
-  return (
-    <img
-      ref={imgRef}
-      src={src}
-      alt={alt}
-      className={className}
-      onError={() => setError(true)}
-    />
-  );
-};
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState<Category | null>(null);
@@ -437,26 +373,7 @@ export default function Home() {
           {/* Project Specimen Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {projectsData[activeCategory].map((project) => (
-              <div key={project.title} className="border border-[#2E4540] p-4 bg-[#167 20% 12%] flex flex-col gap-4">
-                {/* Mock Picture Box */}
-                <div className="w-full h-64 bg-[#0B0909] border border-[#2E4540] relative overflow-hidden group">
-                  <SafeImage
-                    src={project.imagePath}
-                    alt={project.title}
-                    className="w-full h-full object-cover grayscale contrast-110 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700"
-                    fallbackText="image to be added"
-                  />
-                  <div className="absolute inset-0 bg-[#408175]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold tracking-tight text-[#B5B9F0] uppercase">
-                    {project.title}
-                  </h3>
-                  <p className="text-xs text-[#169 15% 65%] mt-1">
-                    {project.description}
-                  </p>
-                </div>
-              </div>
+              <ExpandableProjectCard key={project.title} project={project} />
             ))}
           </div>
         </div>
