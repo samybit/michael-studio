@@ -84,6 +84,41 @@ const projectsData: Record<Category, Project[]> = {
   ]
 };
 
+const SafeImage = ({ 
+  src, 
+  alt, 
+  className, 
+  fallbackText = "image to be added",
+  fallbackClassName = ""
+}: { 
+  src: string; 
+  alt: string; 
+  className: string; 
+  fallbackText?: string;
+  fallbackClassName?: string;
+}) => {
+  const [error, setError] = useState(false);
+
+  if (error) {
+    return (
+      <div className={`flex items-center justify-center bg-[#0d0d0d] border border-[#2E4540]/50 p-2 text-center select-none ${className} ${fallbackClassName}`}>
+        <span className="text-[9px] font-mono text-[#408175] tracking-wider uppercase leading-tight">
+          {fallbackText}
+        </span>
+      </div>
+    );
+  }
+
+  return (
+    <img 
+      src={src} 
+      alt={alt} 
+      className={className} 
+      onError={() => setError(true)}
+    />
+  );
+};
+
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState<Category | null>(null);
   const [contactOpen, setContactOpen] = useState(false);
@@ -144,10 +179,11 @@ export default function Home() {
       <div className="hidden md:flex w-full md:w-[40%] h-full flex-col justify-between p-12 border-r border-[#2E4540] overflow-hidden shrink-0 select-none">
         <div className="flex flex-col gap-8">
           <div className="border border-[#2E4540] p-1 bg-[#167 20% 12%]">
-            <img 
+            <SafeImage 
               src="/profile_photo.jpeg"
               alt="Michael"
               className="w-full h-[280px] object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-700"
+              fallbackText="image to be added"
             />
           </div>
           <div className="flex flex-col gap-2">
@@ -197,10 +233,11 @@ export default function Home() {
 
         {/* Compact Profile Block (Mobile Only) */}
         <div className="flex items-center gap-3 md:hidden p-1 border-b border-[#2E4540]/30 pb-4 shrink-0 select-none">
-          <img 
+          <SafeImage 
             src="/profile_photo.jpeg"
             alt="Michael"
             className="w-10 h-10 object-cover border border-[#2E4540] grayscale"
+            fallbackText="pending"
           />
           <div>
             <h2 className="text-xs font-mono font-bold tracking-widest uppercase text-[#B5B9F0]">Michael Chen</h2>
@@ -257,19 +294,12 @@ export default function Home() {
               <div key={project.title} className="border border-[#2E4540] p-4 bg-[#167 20% 12%] flex flex-col gap-4">
                 {/* Mock Picture Box */}
                 <div className="w-full h-64 bg-[#0B0909] border border-[#2E4540] relative overflow-hidden group">
-                  <img 
+                  <SafeImage 
                     src={project.imagePath} 
                     alt={project.title}
                     className="w-full h-full object-cover grayscale contrast-110 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                    }}
+                    fallbackText="image to be added"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none p-4 select-none">
-                    <span className="text-xs font-mono text-[#2E4540] tracking-widest uppercase group-hover:text-[#B5B9F0] transition-colors duration-300">
-                      {project.title}
-                    </span>
-                  </div>
                   <div className="absolute inset-0 bg-[#408175]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                 </div>
                 <div>
