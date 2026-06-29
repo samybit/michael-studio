@@ -207,13 +207,15 @@ export default function Home() {
       <div className="hidden md:flex w-full md:w-[40%] h-full flex-col justify-between p-12 border-r border-[#2E4540] overflow-hidden shrink-0 select-none">
         <div className="flex flex-col gap-8">
           <div className="border border-[#2E4540] p-1 bg-[#167 20% 12%]">
-            <SafeImage
-              src="/profile_photo.jpeg"
-              alt="Michael Medhat"
-              className="w-full h-[280px] object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-700"
-              type="person"
-              fallbackText="image to be added"
-            />
+            <div className="w-full h-[280px] relative overflow-hidden">
+              <SafeImage
+                src="/profile_photo.jpeg"
+                alt="Michael Medhat"
+                className="w-full h-full object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-700"
+                type="person"
+                fallbackText="image to be added"
+              />
+            </div>
           </div>
           <div className="flex flex-col gap-2">
             <span className="text-[#408175] text-xs font-mono uppercase tracking-widest">// STUDIO FOCUS</span>
@@ -265,13 +267,15 @@ export default function Home() {
         {/* Compact Profile Block (Mobile Only) */}
         <div className="flex flex-col gap-2 md:hidden p-1 border-b border-[#2E4540]/30 pb-4 shrink-0 select-none">
           <div className="flex items-center gap-3">
-            <SafeImage
-              src="/profile_photo.jpeg"
-              alt="Michael Medhat"
-              className="w-10 h-10 object-cover border border-[#2E4540] grayscale"
-              type="person"
-              fallbackText="pending"
-            />
+            <div className="w-10 h-10 relative overflow-hidden shrink-0">
+              <SafeImage
+                src="/profile_photo.jpeg"
+                alt="Michael Medhat"
+                className="w-full h-full object-cover border border-[#2E4540] grayscale"
+                type="person"
+                fallbackText="pending"
+              />
+            </div>
             <div>
               <h2 className="text-xs font-mono font-bold tracking-widest uppercase text-[#B5B9F0]">Michael Medhat</h2>
               <p className="text-[10px] text-[#169 15% 65%]">Lead Spatial Architect</p>
