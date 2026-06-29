@@ -11,7 +11,7 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   z-index: 40;
   overflow: hidden;
 }
@@ -138,7 +138,7 @@
   -webkit-backdrop-filter: blur(12px);
   display: flex;
   flex-direction: column;
-  padding: 6em 2em 2em 2em;
+  padding: 6em 2em max(2em, env(safe-area-inset-bottom)) 2em; 
   overflow-y: auto;
   z-index: 10;
   pointer-events: auto;

@@ -401,14 +401,15 @@ export default function Home() {
       {activeCategory && (
         <div className="fixed inset-0 z-50 bg-[#0B0909] text-[#B5B9F0] overflow-y-auto flex flex-col p-6 md:p-16 border-4 border-[#2E4540]">
           {/* Takeover Header */}
-          <div className="flex justify-between items-center border-b border-[#2E4540] pb-6 mb-8">
+          <div className="flex flex-col md:flex-row md:justify-between items-start md:items-center gap-6 border-b border-[#2E4540] pb-6 mb-8">
             <div>
-              <span className="text-xs font-mono text-[#408175] tracking-widest uppercase">// EXPLORE SPECIMENS</span>
+              <span className="text-xs font-mono text-[#408175] tracking-widest uppercase">// EXPLORE DESIGNS</span>
               <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-[#B5B9F0]">{activeCategory}</h2>
             </div>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 md:gap-8 mt-2 sm:mt-0">
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 md:gap-8 w-full md:w-auto mt-2 sm:mt-0">
               {/* Category Switcher Navigation */}
-              <nav className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-5 text-xs font-mono uppercase tracking-widest">
+              <nav className="flex flex-wrap items-center gap-4 md:gap-5 text-xs font-mono uppercase tracking-widest w-full sm:w-auto">
                 <span className="text-[#2E4540] hidden md:inline">// BROWSE:</span>
                 {categories.map((cat) => {
                   if (cat === activeCategory) return null;
@@ -426,7 +427,7 @@ export default function Home() {
 
               <button
                 onClick={closeCategory}
-                className="px-5 py-2.5 border border-[#B5B9F0] bg-transparent text-xs font-mono uppercase tracking-widest text-[#B5B9F0] hover:bg-[#B5B9F0] hover:text-[#0B0909] transition-all duration-300 rounded-none cursor-pointer shrink-0"
+                className="w-full sm:w-auto px-5 py-2.5 border border-[#B5B9F0] bg-transparent text-xs font-mono uppercase tracking-widest text-[#B5B9F0] hover:bg-[#B5B9F0] hover:text-[#0B0909] transition-all duration-300 rounded-none cursor-pointer shrink-0"
               >
                 Close [X]
               </button>
