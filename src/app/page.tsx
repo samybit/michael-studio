@@ -68,8 +68,14 @@ const projectsData: Record<Category, Project[]> = {
   Bathrooms: [
     {
       title: "Concrete Spa Chamber",
-      imagePath: "/assets/projects/bathrooms/concrete-spa-01.jpg",
-      description: "Polished concrete walls offset by warm cedar slats and a sunken stone tub."
+      imagePath: "/projects/bathrooms/bathroom-1.jpg",
+      description: "Polished concrete walls offset by warm cedar slats and a sunken stone tub.",
+      gallery: [
+        "/projects/bathrooms/image-1.jpg",
+        "/projects/bathrooms/image-2.jpg",
+        "/projects/bathrooms/image-3.jpg",
+        "/projects/bathrooms/image-4.jpg"
+      ]
     },
     {
       title: "Terrazzo Sanctuary",

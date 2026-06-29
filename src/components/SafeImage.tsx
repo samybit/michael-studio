@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
+import Image from "next/image";
 
 export const SafeImage = ({
   src,
@@ -18,16 +19,6 @@ export const SafeImage = ({
   fallbackClassName?: string;
 }) => {
   const [error, setError] = useState(false);
-  const imgRef = useRef<HTMLImageElement>(null);
-
-  useEffect(() => {
-    const img = imgRef.current;
-    if (img) {
-      if (img.complete && img.naturalWidth === 0) {
-        setError(true);
-      }
-    }
-  }, [src]);
 
   if (error) {
     if (type === "person") {
@@ -66,10 +57,10 @@ export const SafeImage = ({
   }
 
   return (
-    <img
-      ref={imgRef}
+    <Image
       src={src}
       alt={alt}
+      fill
       className={className}
       onError={() => setError(true)}
     />
