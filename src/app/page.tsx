@@ -406,12 +406,31 @@ export default function Home() {
               <span className="text-xs font-mono text-[#408175] tracking-widest uppercase">// EXPLORE SPECIMENS</span>
               <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-[#B5B9F0]">{activeCategory}</h2>
             </div>
-            <button
-              onClick={closeCategory}
-              className="px-6 py-3 border-2 border-[#B5B9F0] bg-transparent text-sm font-mono uppercase tracking-widest text-[#B5B9F0] hover:bg-[#B5B9F0] hover:text-[#0B0909] transition-all duration-300 rounded-none cursor-pointer"
-            >
-              Close [X]
-            </button>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 md:gap-8 mt-2 sm:mt-0">
+              {/* Category Switcher Navigation */}
+              <nav className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-5 text-xs font-mono uppercase tracking-widest">
+                <span className="text-[#2E4540] hidden md:inline">// BROWSE:</span>
+                {categories.map((cat) => {
+                  if (cat === activeCategory) return null;
+                  return (
+                    <a
+                      key={cat}
+                      href={`#${cat.toLowerCase()}`}
+                      className="text-[#408175] hover:text-[#B5B9F0] transition-colors duration-300 border-b border-[#2E4540] hover:border-[#B5B9F0] pb-0.5"
+                    >
+                      {cat}
+                    </a>
+                  );
+                })}
+              </nav>
+
+              <button
+                onClick={closeCategory}
+                className="px-5 py-2.5 border border-[#B5B9F0] bg-transparent text-xs font-mono uppercase tracking-widest text-[#B5B9F0] hover:bg-[#B5B9F0] hover:text-[#0B0909] transition-all duration-300 rounded-none cursor-pointer shrink-0"
+              >
+                Close [X]
+              </button>
+            </div>
           </div>
 
           {/* Project Specimen Grid */}
