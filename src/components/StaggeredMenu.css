@@ -132,7 +132,8 @@
   right: 0;
   width: clamp(260px, 38vw, 420px);
   height: 100%;
-  background: white;
+  background: #0B0909;
+  border-left: 1px solid #2E4540;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   display: flex;
@@ -236,7 +237,7 @@
 .sm-socials-link {
   font-size: 1.2rem;
   font-weight: 500;
-  color: #111;
+  color: hsl(236 67% 83%);
   text-decoration: none;
   position: relative;
   padding: 2px 0;
@@ -269,9 +270,9 @@
 
 .sm-panel-item {
   position: relative;
-  color: #000;
+  color: #408175;
   font-weight: 600;
-  font-size: 3.5rem;
+  font-size: 2rem;
   cursor: pointer;
   line-height: 1;
   letter-spacing: -2px;
@@ -281,7 +282,14 @@
     color 0.25s;
   display: inline-block;
   text-decoration: none;
-  padding-right: 1.4em;
+  padding-right: 1.1em;
+}
+
+@media (min-width: 640px) {
+  .sm-panel-item {
+    font-size: 3.5rem;
+    padding-right: 1.4em;
+  }
 }
 
 .staggered-menu-panel .sm-socials-list .sm-socials-link {
@@ -320,15 +328,22 @@
   counter-increment: smItem;
   content: counter(smItem, decimal-leading-zero);
   position: absolute;
-  top: 0.1em;
-  right: 2.8em;
-  font-size: 18px;
+  top: 0.15em;
+  right: 2em;
+  font-size: 13px;
   font-weight: 400;
   color: var(--sm-accent, #5227ff);
   letter-spacing: 0;
   pointer-events: none;
   user-select: none;
   opacity: var(--sm-num-opacity, 0);
+}
+
+@media (min-width: 640px) {
+  .sm-panel-list[data-numbering] .sm-panel-item::after {
+    right: 2.8em;
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 1024px) {

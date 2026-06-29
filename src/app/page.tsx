@@ -84,16 +84,16 @@ const projectsData: Record<Category, Project[]> = {
   ]
 };
 
-const SafeImage = ({ 
-  src, 
-  alt, 
-  className, 
+const SafeImage = ({
+  src,
+  alt,
+  className,
   fallbackText = "image to be added",
   fallbackClassName = ""
-}: { 
-  src: string; 
-  alt: string; 
-  className: string; 
+}: {
+  src: string;
+  alt: string;
+  className: string;
   fallbackText?: string;
   fallbackClassName?: string;
 }) => {
@@ -110,10 +110,10 @@ const SafeImage = ({
   }
 
   return (
-    <img 
-      src={src} 
-      alt={alt} 
-      className={className} 
+    <img
+      src={src}
+      alt={alt}
+      className={className}
       onError={() => setError(true)}
     />
   );
@@ -157,13 +157,13 @@ export default function Home() {
 
   return (
     <main className="w-full h-dvh overflow-hidden flex flex-col md:flex-row relative bg-[#0B0909] text-[#B5B9F0] font-sans">
-      
+
       {/* Mobile Navbar Block (StaggeredMenu) */}
       <div className="md:hidden w-full h-[80px] shrink-0 relative z-40 bg-[#0B0909]">
-        <StaggeredMenu 
-          isFixed={true} 
+        <StaggeredMenu
+          isFixed={true}
           position="right"
-          accentColor="hsl(169 34% 38%)" 
+          accentColor="hsl(236 67% 83%)"
           colors={['hsl(167 20% 12%)', 'hsl(167 20% 23%)']}
           items={menuItems}
           socialItems={[
@@ -179,9 +179,9 @@ export default function Home() {
       <div className="hidden md:flex w-full md:w-[40%] h-full flex-col justify-between p-12 border-r border-[#2E4540] overflow-hidden shrink-0 select-none">
         <div className="flex flex-col gap-8">
           <div className="border border-[#2E4540] p-1 bg-[#167 20% 12%]">
-            <SafeImage 
+            <SafeImage
               src="/profile_photo.jpeg"
-              alt="Michael"
+              alt="Michael Medhat"
               className="w-full h-[280px] object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-700"
               fallbackText="image to be added"
             />
@@ -189,7 +189,7 @@ export default function Home() {
           <div className="flex flex-col gap-2">
             <span className="text-[#408175] text-xs font-mono uppercase tracking-widest">// STUDIO FOCUS</span>
             <h1 className="text-4xl font-black tracking-tighter text-[#B5B9F0] uppercase leading-none">
-              Michael
+              Michael Medhat
             </h1>
             <div className="flex flex-col gap-1 mt-2 text-xs font-mono text-[#169 15% 65%]">
               <p>• SPATIAL DIRECTOR</p>
@@ -201,28 +201,28 @@ export default function Home() {
             Crafting architectural statements that fuse raw structural honesty with refined brutalist details. Transforming domestic spaces into curated spatial experiences.
           </p>
         </div>
-        
+
         {/* Footer (Left-pinned metadata) */}
         <div className="text-[10px] font-mono text-[#2E4540] tracking-wider uppercase">
-          © 2026 Michael. All Rights Reserved.
+          © 2026 Michael Medhat. All Rights Reserved.
         </div>
       </div>
 
       {/* Right Panel - Interactive View */}
       <div className="w-full md:w-[60%] h-[calc(100dvh-80px)] md:h-full flex flex-col justify-between p-6 md:p-12 overflow-hidden bg-[#0B0909]">
-        
+
         {/* Desktop Navbar (GooeyNav) */}
         <div className="hidden md:flex justify-between items-center w-full">
-          <span className="text-lg font-black tracking-widest text-[#B5B9F0]">// MICHAEL</span>
+          <span className="text-lg font-black tracking-widest text-[#B5B9F0]">// Michael Medhat</span>
           <div className="flex items-center gap-6">
-            <GooeyNav 
-              items={navItems} 
+            <GooeyNav
+              items={navItems}
               activeIndex={activeIndex}
               onChange={(index) => {
                 window.location.hash = categories[index].toLowerCase();
               }}
             />
-            <button 
+            <button
               onClick={() => setContactOpen(true)}
               className="px-6 py-2 border border-[#B5B9F0] text-xs font-mono uppercase tracking-widest text-[#B5B9F0] hover:bg-[#B5B9F0] hover:text-[#0B0909] transition-all duration-300 rounded-none cursor-pointer"
             >
@@ -232,17 +232,22 @@ export default function Home() {
         </div>
 
         {/* Compact Profile Block (Mobile Only) */}
-        <div className="flex items-center gap-3 md:hidden p-1 border-b border-[#2E4540]/30 pb-4 shrink-0 select-none">
-          <SafeImage 
-            src="/profile_photo.jpeg"
-            alt="Michael"
-            className="w-10 h-10 object-cover border border-[#2E4540] grayscale"
-            fallbackText="pending"
-          />
-          <div>
-            <h2 className="text-xs font-mono font-bold tracking-widest uppercase text-[#B5B9F0]">Michael Chen</h2>
-            <p className="text-[10px] text-[#169 15% 65%]">Lead Spatial Architect</p>
+        <div className="flex flex-col gap-2 md:hidden p-1 border-b border-[#2E4540]/30 pb-4 shrink-0 select-none">
+          <div className="flex items-center gap-3">
+            <SafeImage
+              src="/profile_photo.jpeg"
+              alt="Michael Medhat"
+              className="w-10 h-10 object-cover border border-[#2E4540] grayscale"
+              fallbackText="pending"
+            />
+            <div>
+              <h2 className="text-xs font-mono font-bold tracking-widest uppercase text-[#B5B9F0]">Michael Medhat</h2>
+              <p className="text-[10px] text-[#169 15% 65%]">Lead Spatial Architect</p>
+            </div>
           </div>
+          <p className="text-[11px] leading-relaxed text-[#169 15% 65%] mt-1">
+            Crafting architectural statements that fuse raw structural honesty with refined brutalist details.
+          </p>
         </div>
 
         {/* Dynamic Center Arena (Massive Category Links) */}
@@ -252,7 +257,7 @@ export default function Home() {
           </div>
           <nav className="flex flex-col gap-2 md:gap-4">
             {categories.map((category) => (
-              <a 
+              <a
                 key={category}
                 href={`#${category.toLowerCase()}`}
                 className="group relative inline-block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter uppercase text-[#408175] hover:text-[#B5B9F0] transition-colors duration-500 leading-none"
@@ -266,7 +271,7 @@ export default function Home() {
 
         {/* Footer (Mobile/Desktop credits) */}
         <div className="flex justify-between items-center text-[10px] font-mono text-[#2E4540] tracking-wider shrink-0 select-none">
-          <span className="md:hidden">© 2026 MICHAEL CHEN</span>
+          <span className="md:hidden">© 2026 Michael Medhat</span>
           <span>SPATIAL DESIGN SHOWCASE</span>
         </div>
       </div>
@@ -280,7 +285,7 @@ export default function Home() {
               <span className="text-xs font-mono text-[#408175] tracking-widest uppercase">// EXPLORE SPECIMENS</span>
               <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-[#B5B9F0]">{activeCategory}</h2>
             </div>
-            <button 
+            <button
               onClick={closeCategory}
               className="px-6 py-3 border-2 border-[#B5B9F0] bg-transparent text-sm font-mono uppercase tracking-widest text-[#B5B9F0] hover:bg-[#B5B9F0] hover:text-[#0B0909] transition-all duration-300 rounded-none cursor-pointer"
             >
@@ -294,8 +299,8 @@ export default function Home() {
               <div key={project.title} className="border border-[#2E4540] p-4 bg-[#167 20% 12%] flex flex-col gap-4">
                 {/* Mock Picture Box */}
                 <div className="w-full h-64 bg-[#0B0909] border border-[#2E4540] relative overflow-hidden group">
-                  <SafeImage 
-                    src={project.imagePath} 
+                  <SafeImage
+                    src={project.imagePath}
                     alt={project.title}
                     className="w-full h-full object-cover grayscale contrast-110 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700"
                     fallbackText="image to be added"
@@ -320,7 +325,7 @@ export default function Home() {
       {contactOpen && (
         <div className="fixed inset-0 z-[60] bg-[#0B0909]/95 backdrop-blur-md flex items-center justify-center p-4">
           <div className="bg-[#167 20% 12%] border-2 border-[#B5B9F0] p-8 max-w-md w-full relative">
-            <button 
+            <button
               onClick={() => setContactOpen(false)}
               className="absolute top-4 right-4 text-xs font-mono text-[#B5B9F0] hover:text-[#408175] uppercase cursor-pointer"
             >
@@ -330,11 +335,11 @@ export default function Home() {
             <div className="flex flex-col gap-4 text-sm font-mono text-[#169 15% 65%]">
               <div>
                 <span className="text-[#408175] text-xs font-bold block mb-1">EMAIL</span>
-                <a href="mailto:studio@michaelchen.arch" className="text-[#B5B9F0] hover:underline">studio@michaelchen.arch</a>
+                <a href="mailto:michael@arch.com" className="text-[#B5B9F0] hover:underline">michael@arch.com</a>
               </div>
               <div>
                 <span className="text-[#408175] text-xs font-bold block mb-1">OFFICES</span>
-                <span className="text-[#B5B9F0]">New York / Berlin / Tokyo</span>
+                <span className="text-[#B5B9F0]">Cairo / Minya</span>
               </div>
               <div className="border-t border-[#2E4540] pt-4 mt-2">
                 <p className="text-xs">Available for selective private residential commissions.</p>

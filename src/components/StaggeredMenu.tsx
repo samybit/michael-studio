@@ -411,7 +411,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
               height={24}
             />
           ) : (
-            <span className="text-xl font-bold tracking-tight text-foreground">MICHAEL</span>
+            <span className="text-xl font-bold tracking-tight text-foreground">Michael Medhat</span>
           )}
         </div>
         <div className="flex items-center gap-4 pointer-events-auto">
