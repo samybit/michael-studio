@@ -233,14 +233,14 @@ export default function Home() {
           speed={1.5}
           rayColor1="#B5B9F0"
           rayColor2="#408175"
-          intensity={1.5}
-          spread={2.5}
+          intensity={2.8}
+          spread={3.5}
           origin="top-right"
           tilt={10}
           saturation={1.2}
           blend={0.6}
-          falloff={1.4}
-          opacity={0.8}
+          falloff={1.1}
+          opacity={0.9}
         />
       </div>
 
