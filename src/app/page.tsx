@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from 'react';
 import StaggeredMenu from '@/components/StaggeredMenu';
 import GooeyNav from '@/components/GooeyNav';
+import VerticalCutReveal from '@/components/fancy/text/vertical-cut-reveal';
+import { DiaTextReveal } from '@/components/magicui/dia-text-reveal';
 
 const InstagramIcon = ({ size = 16 }: { size?: number }) => (
   <svg
@@ -260,13 +262,15 @@ export default function Home() {
               Michael Medhat
             </h1>
             <div className="flex flex-col gap-1 mt-2 text-xs font-mono text-[#169 15% 65%]">
-              <p>• SPATIAL DIRECTOR</p>
-              <p>• STRUCTURAL SCHEMES</p>
-              <p>• BRUTALIST ORCHESTRATIONS</p>
+              <p><VerticalCutReveal staggerDuration={0.04} splitBy="characters">• SPATIAL DIRECTOR</VerticalCutReveal></p>
+              <p><VerticalCutReveal staggerDuration={0.04} splitBy="characters" transition={{ type: 'spring', stiffness: 190, damping: 22, delay: 0.25 }}>• STRUCTURAL SCHEMES</VerticalCutReveal></p>
+              <p><VerticalCutReveal staggerDuration={0.04} splitBy="characters" transition={{ type: 'spring', stiffness: 190, damping: 22, delay: 0.5 }}>• BRUTALIST ORCHESTRATIONS</VerticalCutReveal></p>
             </div>
           </div>
           <p className="text-[#169 15% 65%] text-sm leading-relaxed max-w-sm">
-            Crafting architectural statements that fuse raw structural honesty with refined details. Transforming domestic spaces into curated spatial experiences.
+            <VerticalCutReveal splitBy="words" staggerDuration={0.06} transition={{ type: 'spring', stiffness: 160, damping: 22, delay: 0.6 }}>
+              Crafting architectural statements that fuse raw structural honesty with refined details. Transforming domestic spaces into curated spatial experiences.
+            </VerticalCutReveal>
           </p>
         </div>
 
@@ -315,7 +319,9 @@ export default function Home() {
             </div>
           </div>
           <p className="text-[11px] leading-relaxed text-[#169 15% 65%] mt-1">
-            Crafting architectural statements that fuse raw structural honesty with refined details.
+            <VerticalCutReveal splitBy="words" staggerDuration={0.05} transition={{ type: 'spring', stiffness: 170, damping: 22, delay: 0.3 }}>
+              Crafting architectural statements that fuse raw structural honesty with refined details.
+            </VerticalCutReveal>
           </p>
         </div>
 
@@ -325,13 +331,20 @@ export default function Home() {
             // SELECT PORTFOLIO
           </div>
           <nav className="flex flex-col gap-2 md:gap-4">
-            {categories.map((category) => (
+            {categories.map((category, catIdx) => (
               <a
                 key={category}
                 href={`#${category.toLowerCase()}`}
-                className="group relative inline-block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter uppercase text-[#408175] hover:text-[#B5B9F0] transition-colors duration-500 leading-none"
+                className="group relative inline-block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter uppercase leading-none"
               >
-                <span className="relative z-10">{category}</span>
+                <DiaTextReveal
+                  text={category}
+                  textColor="#408175"
+                  colors={['#B5B9F0', '#408175', '#c6ffd0', '#B5B9F0']}
+                  duration={1.2}
+                  delay={0.3 + catIdx * 0.2}
+                  className="group-hover:opacity-80 transition-opacity duration-300"
+                />
                 <span className="absolute left-0 bottom-0 w-0 h-[4px] bg-[#B5B9F0] group-hover:w-full transition-all duration-500"></span>
               </a>
             ))}
