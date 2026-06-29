@@ -5,6 +5,7 @@ import StaggeredMenu from '@/components/StaggeredMenu';
 import GooeyNav from '@/components/GooeyNav';
 import VerticalCutReveal from '@/components/fancy/text/vertical-cut-reveal';
 import { DiaTextReveal } from '@/components/magicui/dia-text-reveal';
+import SideRays from '@/components/SideRays';
 
 const InstagramIcon = ({ size = 16 }: { size?: number }) => (
   <svg
@@ -226,6 +227,22 @@ export default function Home() {
 
   return (
     <main className="w-full h-dvh overflow-hidden flex flex-col md:flex-row relative bg-[#0B0909] text-[#B5B9F0] font-sans">
+      {/* Side Rays Background */}
+      <div className="absolute inset-0 pointer-events-none z-0 opacity-40">
+        <SideRays
+          speed={1.5}
+          rayColor1="#B5B9F0"
+          rayColor2="#408175"
+          intensity={1.5}
+          spread={2.5}
+          origin="top-right"
+          tilt={10}
+          saturation={1.2}
+          blend={0.6}
+          falloff={1.4}
+          opacity={0.8}
+        />
+      </div>
 
       {/* Mobile Navbar Block (StaggeredMenu) */}
       <div className="md:hidden w-full h-[80px] shrink-0 relative z-40 bg-[#0B0909]">
@@ -281,7 +298,7 @@ export default function Home() {
       </div>
 
       {/* Right Panel - Interactive View */}
-      <div className="w-full md:w-[60%] h-[calc(100dvh-80px)] md:h-full flex flex-col justify-between p-6 md:p-12 overflow-hidden bg-[#0B0909]">
+      <div className="w-full md:w-[60%] h-[calc(100dvh-80px)] md:h-full flex flex-col justify-between p-6 md:p-12 overflow-hidden bg-transparent">
 
         {/* Desktop Navbar (GooeyNav) */}
         <div className="hidden md:flex justify-between items-center w-full">
