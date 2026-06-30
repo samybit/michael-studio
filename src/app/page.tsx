@@ -39,7 +39,7 @@ const BehanceIcon = ({ size = 16 }: { size?: number }) => (
   </svg>
 );
 
-const categories = ['Kitchens', 'Bathrooms', 'Apartments', 'Bedrooms'] as const;
+const categories = ['Kitchens', 'Bedrooms', 'Bathrooms', 'Apartments'] as const;
 type Category = typeof categories[number];
 
 interface Project {

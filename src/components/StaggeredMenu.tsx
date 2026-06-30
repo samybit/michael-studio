@@ -170,7 +170,6 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     const staggerDelay = 0.08;
     const sweepDuration = 0.65;
 
-
     layerStates.forEach((ls, i) => {
       tl.fromTo(
         ls.el,
