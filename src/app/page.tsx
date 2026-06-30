@@ -354,9 +354,10 @@ export default function Home() {
         {/* Dynamic Center Arena (Massive Category Links) */}
         <TrailingImage
           images={projectImages}
+          maxTrailZIndex={5}
           className="flex-1 flex flex-col justify-center gap-6 md:gap-8"
         >
-          <div className="text-[10px] font-mono text-accent tracking-widest uppercase mb-1">
+          <div className="text-[10px] font-mono text-accent tracking-widest uppercase mb-1 relative z-10">
             // SELECT PORTFOLIO
           </div>
           <nav
@@ -374,7 +375,7 @@ export default function Home() {
                   key={category}
                   href={`#${category.toLowerCase()}`}
                   data-category={category}
-                  className="group relative inline-block text-[11.5vw] sm:text-7xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter uppercase leading-none"
+                  className="group relative z-10 inline-block text-[11.5vw] sm:text-7xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter uppercase leading-none"
                 >
                   <DiaTextReveal
                     text={category}
