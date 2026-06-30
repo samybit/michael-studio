@@ -224,13 +224,14 @@ export default function Home() {
           isFixed={true}
           position="right"
           accentColor="var(--accent)"
-          colors={['var(--background)', 'var(--card)']}
+          // Pass a sequence of colors to create the staggered trail
+          colors={['var(--accent)', 'var(--secondary)', 'var(--muted)', 'var(--card)']}
           items={menuItems}
           socialItems={[
             { label: 'Insta', link: 'https://instagram.com/mickel_medhat' },
             { label: 'Behance', link: 'https://behance.net' }
           ]}
-          logoUrl="" // Empty string renders text fallback inside component
+          logoUrl=""
           onContactClick={() => setContactOpen(true)}
         />
       </div>
