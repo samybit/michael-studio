@@ -98,9 +98,7 @@ export function ExpandableProjectCard({
                 <div className="w-full h-full overflow-y-auto flex flex-col">
                   <div className="sticky top-0 z-10 flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 md:p-6 border-b border-border bg-background gap-4">
                      <motion.h3 
-                       key={currentProject.title}
-                       initial={{ opacity: 0, x: -10 }}
-                       animate={{ opacity: 1, x: 0 }}
+                       layoutId={`card-title-${currentProject.title.replace(/\s+/g, '-')}`}
                        className="text-2xl md:text-4xl font-black uppercase text-foreground tracking-tighter"
                      >
                        {currentProject.title}
@@ -136,9 +134,7 @@ export function ExpandableProjectCard({
                   <div className="p-4 md:p-8 flex flex-col lg:flex-row gap-8">
                     <div className="w-full lg:w-1/3 flex flex-col gap-6">
                       <motion.div 
-                        key={`img-${currentProject.title}`}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
+                        layoutId={`card-image-container-${currentProject.title.replace(/\s+/g, '-')}`}
                         className="w-full aspect-[4/3] md:aspect-square bg-background border border-border relative overflow-hidden"
                       >
                         <SafeImage
@@ -149,9 +145,7 @@ export function ExpandableProjectCard({
                         />
                       </motion.div>
                       <motion.p 
-                        key={`desc-${currentProject.title}`}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
+                        layoutId={`card-desc-${currentProject.title.replace(/\s+/g, '-')}`}
                         className="text-sm md:text-base text-muted-foreground leading-relaxed font-mono"
                       >
                         {currentProject.description}
