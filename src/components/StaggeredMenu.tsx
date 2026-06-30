@@ -166,16 +166,26 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
     const tl = gsap.timeline({ paused: true });
 
+    // Define uniform animation variables for a smoother, continuous sweep
+    const staggerDelay = 0.08;
+    const sweepDuration = 0.65;
+
+
     layerStates.forEach((ls, i) => {
-      tl.fromTo(ls.el, { xPercent: ls.start }, { xPercent: 0, duration: 0.5, ease: 'power4.out' }, i * 0.07);
+      tl.fromTo(
+        ls.el,
+        { xPercent: ls.start },
+        { xPercent: 0, duration: sweepDuration, ease: 'power3.out' },
+        i * staggerDelay
+      );
     });
     const lastTime = layerStates.length ? (layerStates.length - 1) * 0.07 : 0;
-    const panelInsertTime = lastTime + (layerStates.length ? 0.08 : 0);
+    const panelInsertTime = layerStates.length * staggerDelay;
     const panelDuration = 0.65;
     tl.fromTo(
       panel,
       { xPercent: panelStart },
-      { xPercent: 0, duration: panelDuration, ease: 'power4.out' },
+      { xPercent: 0, duration: sweepDuration, ease: 'power3.out' },
       panelInsertTime
     );
 

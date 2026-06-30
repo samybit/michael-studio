@@ -349,7 +349,8 @@
 }
 
 @media (max-width: 1024px) {
-  .staggered-menu-panel {
+  .staggered-menu-panel,
+  .sm-prelayers {
     width: 100%;
     left: 0;
     right: 0;
@@ -361,7 +362,8 @@
 }
 
 @media (max-width: 640px) {
-  .staggered-menu-panel {
+  .staggered-menu-panel,
+  .sm-prelayers {
     width: 100%;
     left: 0;
     right: 0;
