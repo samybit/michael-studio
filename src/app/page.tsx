@@ -9,6 +9,8 @@ import SideRays from '@/components/SideRays';
 import { ExpandableProjectCard } from '@/components/ExpandableProjectCard';
 import { SafeImage } from '@/components/SafeImage';
 
+const backgroundImages = ['/bg.jpg', '/bg2.jpg', '/bg3.jpg'];
+
 const InstagramIcon = ({ size = 16 }: { size?: number }) => (
   <svg
     width={size}
@@ -135,7 +137,27 @@ export default function Home() {
   const [activeCategory, setActiveCategory] = useState<Category | null>(null);
   const [contactOpen, setContactOpen] = useState(false);
 
+  // the State for the background cycle
+  const [bgLoaded, setBgLoaded] = useState(false);
+  const [bgImage, setBgImage] = useState(backgroundImages[0]);
+
   const activeIndex = activeCategory ? categories.indexOf(activeCategory) : -1;
+
+  // the Cycle logic effect
+  useEffect(() => {
+    // Read the last used index
+    const storedIndex = localStorage.getItem('michael_bg_index');
+
+    // Calculate the next index in the sequence (0 -> 1 -> 2 -> 0)
+    const nextIndex = storedIndex ? (parseInt(storedIndex, 10) + 1) % backgroundImages.length : 0;
+
+    // Save it for the next refresh
+    localStorage.setItem('michael_bg_index', nextIndex.toString());
+
+    // Apply the image and trigger the fade-in
+    setBgImage(backgroundImages[nextIndex]);
+    setBgLoaded(true);
+  }, []);
 
   // Sync category state with URL Hash for robust routing (back button, deep link support)
   useEffect(() => {
@@ -169,6 +191,16 @@ export default function Home() {
 
   return (
     <main className="w-full h-dvh overflow-hidden flex flex-col md:flex-row relative bg-background text-foreground font-sans">
+
+      {/* Blurred Background Image */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none bg-cover bg-center blur-sm scale-110 transition-opacity duration-1000 ease-in-out"
+        style={{
+          backgroundImage: `url('${bgImage}')`,
+          opacity: bgLoaded ? 0.25 : 0
+        }}
+      />
+
       {/* Side Rays Background */}
       <div className="absolute inset-0 pointer-events-none z-0 opacity-40">
         <SideRays
@@ -383,9 +415,9 @@ export default function Home() {
           {/* Project Specimen Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {projectsData[activeCategory].map((project, idx) => (
-              <ExpandableProjectCard 
-                key={project.title} 
-                project={project} 
+              <ExpandableProjectCard
+                key={project.title}
+                project={project}
                 allProjects={projectsData[activeCategory]}
                 projectIndex={idx}
               />
