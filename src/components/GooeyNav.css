@@ -1,30 +1,28 @@
 :root {
-  --linear-ease: linear(
-    0,
-    0.068,
-    0.19 2.7%,
-    0.804 8.1%,
-    1.037,
-    1.199 13.2%,
-    1.245,
-    1.27 15.8%,
-    1.274,
-    1.272 17.4%,
-    1.249 19.1%,
-    0.996 28%,
-    0.949,
-    0.928 33.3%,
-    0.926,
-    0.933 36.8%,
-    1.001 45.6%,
-    1.013,
-    1.019 50.8%,
-    1.018 54.4%,
-    1 63.1%,
-    0.995 68%,
-    1.001 85%,
-    1
-  );
+  --linear-ease: linear(0,
+      0.068,
+      0.19 2.7%,
+      0.804 8.1%,
+      1.037,
+      1.199 13.2%,
+      1.245,
+      1.27 15.8%,
+      1.274,
+      1.272 17.4%,
+      1.249 19.1%,
+      0.996 28%,
+      0.949,
+      0.928 33.3%,
+      0.926,
+      0.933 36.8%,
+      1.001 45.6%,
+      1.013,
+      1.019 50.8%,
+      1.018 54.4%,
+      1 63.1%,
+      0.995 68%,
+      1.001 85%,
+      1);
 }
 
 .gooey-nav-container {
@@ -56,18 +54,48 @@
   transition:
     background-color 0.3s ease,
     color 0.3s ease,
-    box-shadow 0.3s ease;
+    box-shadow 0.3s ease,
+    opacity 0.4s ease,
+    /* Added for Sibling Focus */
+    filter 0.4s ease;
+  /* Added for Sibling Focus */
   box-shadow: 0 0 0.5px 1.5px transparent;
-  color: white;
+  color: var(--foreground);
+  /* Theme sync */
 }
 
 .gooey-nav-container nav ul li a {
   display: inline-block;
   padding: 0.6em 1em;
+  position: relative;
+  z-index: 2;
+  /* Keeps link text above the pseudo-element */
 }
 
+/* 1. Bridge the 2em gap with an invisible hit area so the hover stays alive */
+.gooey-nav-container nav ul li::before {
+  content: '';
+  position: absolute;
+  top: -0.5em;
+  bottom: -0.5em;
+  left: -1em;
+  /* Extends exactly halfway into the 2em gap */
+  right: -1em;
+  /* Extends exactly halfway into the 2em gap */
+  z-index: 0;
+}
+
+/* 2. Sibling Focus Nav Logic */
+.gooey-nav-container nav ul:has(li:hover) li:not(:hover),
+.gooey-nav-container nav ul:has(li:focus-within) li:not(:focus-within) {
+  opacity: 0.3;
+  filter: blur(1.5px);
+  /* Adds a premium depth-of-field effect */
+}
+
+/* 3. Theme Synchronization Updates */
 .gooey-nav-container nav ul li:focus-within:has(:focus-visible) {
-  box-shadow: 0 0 0.5px 1.5px white;
+  box-shadow: 0 0 0.5px 1.5px var(--foreground);
 }
 
 .gooey-nav-container nav ul li::after {
@@ -75,7 +103,7 @@
   position: absolute;
   inset: 0;
   border-radius: 10px;
-  background: white;
+  background: var(--foreground);
   opacity: 0;
   transform: scale(0);
   transition: all 0.3s ease;
@@ -83,7 +111,7 @@
 }
 
 .gooey-nav-container nav ul li.active {
-  color: black;
+  color: var(--background);
   text-shadow: none;
 }
 
@@ -106,12 +134,12 @@
 }
 
 .gooey-nav-container .effect.text {
-  color: white;
+  color: var(--foreground);
   transition: color 0.3s ease;
 }
 
 .gooey-nav-container .effect.text.active {
-  color: black;
+  color: var(--background);
 }
 
 .gooey-nav-container .effect.filter {
@@ -131,7 +159,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: white;
+  background: var(--foreground);
   transform: scale(0);
   opacity: 0;
   z-index: -1;
