@@ -71,7 +71,6 @@ export function ExpandableProjectCard({
             className="w-full h-full object-cover grayscale contrast-110 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700"
             fallbackText="image to be added"
           />
-          <div className="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
         </motion.div>
         <div>
           <motion.h3 layoutId={`card-title-${project.title.replace(/\s+/g, '-')}`} className="text-lg font-bold tracking-tight text-foreground uppercase">
@@ -171,9 +170,10 @@ export function ExpandableProjectCard({
                           <div key={idx} className="w-full bg-background border border-border relative overflow-hidden group break-inside-avoid">
                             <SafeImage
                               fill={false}
+                              zoom={true}
                               src={imgSrc}
                               alt={`${currentProject.title} gallery ${idx + 1}`}
-                              className="w-full h-auto grayscale contrast-110 group-hover:grayscale-0 transition-all duration-700"
+                              className="w-full h-auto"
                             />
                             <div className="absolute top-2 left-2 px-2 py-1 bg-background/80 border border-border text-[9px] font-mono text-accent uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
                               View 0{idx + 1}

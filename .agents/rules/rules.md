@@ -2,8 +2,14 @@
 trigger: always_on
 ---
 
-1. Read and strictly adhere to the layout rules, color tokens, and content taxonomy specified inside `DESIGN_SYSTEM.md`.
-2. Implement a strict mobile-first engineering pattern: standard responsive utility classes must target the compressed, vertically stacked single-screen configuration for small mobile viewports by default. Use the `md:` modifier exclusively to orchestrate the horizontal split-pane desktop configuration.
-3. Enforce Section 7 (Production Asset & Content Quality Enforcements) at all times: clear all sandboxed joke indicators (like "banana"), or lazy string stubs. Utilize realistic production path structures and professional architectural copywriting.
-4. Optimize Quota & Build Behavior: DO NOT run full production builds (`pnpm build` or 'pnpm exec tsc --noEmit 2>&1') for incremental style adjustments, small feature changes, or single-component edits. Rely on static type-checking or your internal code analysis. Only trigger a full production compilation when checking a major layout milestone or upon explicit instructions to test deployment readiness.
-5. Execute Section 6 (Post-Execution Commit Requirements): immediately following code output or structural adjustments, generate a valid Conventional Commit recommendation block at the absolute end of the reply.
+# Agent Rules
+
+1. **Design System**: Adhere strictly to `DESIGN_SYSTEM.md` layout rules, color tokens, and content taxonomy.
+
+2. **Mobile-First**: Target single-screen vertical stack by default; use `md:` modifier exclusively for desktop split-pane layouts.
+
+3. **Production Quality**: Remove all sandboxed indicators (e.g., "banana"), lazy stubs. Use real paths and professional copywriting (Section 7).
+
+4. **Build Optimization**: Skip full `pnpm build` / `tsc --noEmit` for incremental style changes or single-component edits. Use static analysis instead. Full build only for major layout milestones or explicit deployment checks (Section 6).
+
+5. **Commits**: Generate Conventional Commit recommendation at end of reply after code/structural changes.

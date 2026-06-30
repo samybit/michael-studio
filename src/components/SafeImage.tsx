@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 
 export const SafeImage = ({
@@ -10,7 +10,8 @@ export const SafeImage = ({
   type = "project",
   fallbackText = "image to be added",
   fallbackClassName = "",
-  fill = true
+  fill = true,
+  zoom = false
 }: {
   src: string;
   alt: string;
@@ -19,8 +20,43 @@ export const SafeImage = ({
   fallbackText?: string;
   fallbackClassName?: string;
   fill?: boolean;
+  zoom?: boolean;
 }) => {
   const [error, setError] = useState(false);
+  const [zooming, setZooming] = useState(false);
+  const [coords, setCoords] = useState({ x: 0, y: 0, pxX: 0, pxY: 0, width: 0, height: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const { left, top, width, height } = containerRef.current.getBoundingClientRect();
+    const x = e.clientX - left;
+    const y = e.clientY - top;
+    setCoords({
+      x: (x / width) * 100,
+      y: (y / height) * 100,
+      pxX: x,
+      pxY: y,
+      width,
+      height
+    });
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!containerRef.current || e.touches.length === 0) return;
+    const touch = e.touches[0];
+    const { left, top, width, height } = containerRef.current.getBoundingClientRect();
+    const x = Math.max(0, Math.min(width, touch.clientX - left));
+    const y = Math.max(0, Math.min(height, touch.clientY - top));
+    setCoords({
+      x: (x / width) * 100,
+      y: (y / height) * 100,
+      pxX: x,
+      pxY: y,
+      width,
+      height
+    });
+  };
 
   if (error) {
     if (type === "person") {
@@ -67,6 +103,50 @@ export const SafeImage = ({
         className={className}
         onError={() => setError(true)}
       />
+    );
+  }
+
+  if (zoom) {
+    return (
+      <div
+        ref={containerRef}
+        className="relative overflow-hidden cursor-crosshair w-full h-full select-none touch-none"
+        onMouseEnter={() => setZooming(true)}
+        onMouseLeave={() => setZooming(false)}
+        onMouseMove={handleMouseMove}
+        onTouchStart={(e) => {
+          setZooming(true);
+          handleTouchMove(e);
+        }}
+        onTouchEnd={() => setZooming(false)}
+        onTouchMove={handleTouchMove}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{ width: '100%', height: 'auto' }}
+          className={className}
+          onError={() => setError(true)}
+        />
+        {zooming && (
+          <div
+            className="absolute pointer-events-none rounded-full border border-foreground shadow-2xl bg-no-repeat z-10"
+            style={{
+              width: "140px",
+              height: "140px",
+              left: `${coords.x}%`,
+              top: `${coords.y}%`,
+              transform: "translate(-50%, -50%)",
+              backgroundImage: `url(${src})`,
+              backgroundPosition: `${-(coords.pxX * 2.5 - 70)}px ${-(coords.pxY * 2.5 - 70)}px`,
+              backgroundSize: `${coords.width * 2.5}px ${coords.height * 2.5}px`,
+            }}
+          />
+        )}
+      </div>
     );
   }
 
