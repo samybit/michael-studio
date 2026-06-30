@@ -357,7 +357,8 @@ export default function Home() {
                   key={category}
                   href={`#${category.toLowerCase()}`}
                   data-category={category}
-                  className="group relative inline-block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter uppercase leading-none"
+                  // Changed: Mobile base is now 11vw for massive scaling, scaling up heavily on larger screens
+                  className="group relative inline-block text-[11.5vw] sm:text-7xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter uppercase leading-none"
                 >
                   <DiaTextReveal
                     text={category}
