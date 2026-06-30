@@ -26,7 +26,7 @@ const resolveCSSColorToRGB = (colorStr: string): [number, number, number] => {
       temp.parentNode.removeChild(temp);
     }
   }
-  
+
   const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(colorStr);
   return m ? [parseInt(m[1], 16) / 255, parseInt(m[2], 16) / 255, parseInt(m[3], 16) / 255] : [1, 1, 1];
 };
@@ -118,7 +118,8 @@ const SideRays = ({
       if (!containerRef.current) return;
 
       const renderer = new Renderer({
-        dpr: Math.min(window.devicePixelRatio, 2),
+        // Hard-cap DPR to 1 for a massive GPU performance boost on soft backgrounds
+        dpr: Math.min(window.devicePixelRatio, 1),
         alpha: true
       });
       rendererRef.current = renderer;
@@ -138,7 +139,7 @@ void main() {
   gl_Position = vec4(position, 0.0, 1.0);
 }`;
 
-      const frag = `precision highp float;
+      const frag = `precision mediump float;
 
 uniform float iTime;
 uniform vec2 iResolution;
@@ -225,10 +226,17 @@ void main() {
 
       const updateSize = () => {
         if (!containerRef.current || !renderer) return;
-        renderer.dpr = Math.min(window.devicePixelRatio, 2);
+        renderer.dpr = Math.min(window.devicePixelRatio, 1);
         const { clientWidth: w, clientHeight: h } = containerRef.current;
         renderer.setSize(w, h);
         uniforms.iResolution.value = [w * renderer.dpr, h * renderer.dpr];
+
+        // Mobile Responsive Origin Override
+        const isMobile = window.innerWidth < 768;
+        const activeOrigin = isMobile ? 'bottom-left' : origin;
+        const [flipX, flipY] = originToFlip(activeOrigin);
+        uniforms.iFlipX.value = flipX;
+        uniforms.iFlipY.value = flipY;
       };
 
       const loop = (t: number) => {
@@ -284,7 +292,12 @@ void main() {
     u.iRayColor2.value = resolveCSSColorToRGB(rayColor2);
     u.iIntensity.value = intensity;
     u.iSpread.value = spread;
-    const [flipX, flipY] = originToFlip(origin);
+
+    // Check window width for dynamic mobile override
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const activeOrigin = isMobile ? 'bottom-left' : origin;
+    const [flipX, flipY] = originToFlip(activeOrigin);
+
     u.iFlipX.value = flipX;
     u.iFlipY.value = flipY;
     u.iTilt.value = tilt;

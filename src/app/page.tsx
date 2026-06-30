@@ -220,17 +220,17 @@ export default function Home() {
       {/* Side Rays Background */}
       <div className="absolute inset-0 pointer-events-none z-0 opacity-40">
         <SideRays
-          speed={1.5}
+          speed={1.1}
           rayColor1="var(--foreground)"
           rayColor2="var(--accent)"
-          intensity={2.8}
-          spread={3.5}
-          origin="top-right"
-          tilt={10}
+          intensity={2.8}     // Increased brightness at the core
+          spread={1.2}        // Drastically tightened spread for pointier rays
+          origin="top-right"  // Desktop default (overridden to bottom-left automatically on mobile)
+          tilt={15}
           saturation={1.2}
           blend={0.6}
-          falloff={1.1}
-          opacity={0.9}
+          falloff={1.8}       // Faster fade out to prevent washing out the screen
+          opacity={0.85}
         />
       </div>
 
