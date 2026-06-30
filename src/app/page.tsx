@@ -173,8 +173,8 @@ export default function Home() {
       <div className="absolute inset-0 pointer-events-none z-0 opacity-40">
         <SideRays
           speed={1.5}
-          rayColor1="#EEEEEE"
-          rayColor2="#CB2957"
+          rayColor1="var(--foreground)"
+          rayColor2="var(--accent)"
           intensity={2.8}
           spread={3.5}
           origin="top-right"
@@ -191,8 +191,8 @@ export default function Home() {
         <StaggeredMenu
           isFixed={true}
           position="right"
-          accentColor="#CB2957"
-          colors={['#000000', '#141414']}
+          accentColor="var(--accent)"
+          colors={['var(--background)', 'var(--card)']}
           items={menuItems}
           socialItems={[
             { label: 'Insta', link: 'https://instagram.com/mickel_medhat' },
@@ -302,8 +302,8 @@ export default function Home() {
               >
                 <DiaTextReveal
                   text={category}
-                  textColor="#CB2957"
-                  colors={['#EEEEEE', '#CB2957', '#DDDDDD', '#EEEEEE']}
+                  textColor="var(--accent)"
+                  colors={['var(--foreground)', 'var(--accent)', 'var(--border)', 'var(--foreground)']}
                   duration={1.2}
                   delay={0.3 + catIdx * 0.2}
                   className="group-hover:opacity-80 transition-opacity duration-300 pr-2 md:pr-4"

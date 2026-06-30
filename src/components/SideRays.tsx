@@ -4,8 +4,30 @@ import { useRef, useEffect, useState } from 'react';
 import { Renderer, Program, Triangle, Mesh } from 'ogl';
 import './SideRays.css';
 
-const hexToRgb = (hex: string): [number, number, number] => {
-  const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+const resolveCSSColorToRGB = (colorStr: string): [number, number, number] => {
+  if (typeof window === 'undefined') return [1, 1, 1];
+  const temp = document.createElement('div');
+  temp.style.color = colorStr;
+  try {
+    document.body.appendChild(temp);
+    const computed = getComputedStyle(temp).color;
+    const match = computed.match(/\d+/g);
+    if (match && match.length >= 3) {
+      return [
+        parseInt(match[0]) / 255,
+        parseInt(match[1]) / 255,
+        parseInt(match[2]) / 255
+      ];
+    }
+  } catch {
+    /* fallback */
+  } finally {
+    if (temp.parentNode) {
+      temp.parentNode.removeChild(temp);
+    }
+  }
+  
+  const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(colorStr);
   return m ? [parseInt(m[1], 16) / 255, parseInt(m[2], 16) / 255, parseInt(m[3], 16) / 255] : [1, 1, 1];
 };
 
@@ -182,8 +204,8 @@ void main() {
         iTime: { value: 0 },
         iResolution: { value: [1, 1] },
         iSpeed: { value: speed },
-        iRayColor1: { value: hexToRgb(rayColor1) },
-        iRayColor2: { value: hexToRgb(rayColor2) },
+        iRayColor1: { value: resolveCSSColorToRGB(rayColor1) },
+        iRayColor2: { value: resolveCSSColorToRGB(rayColor2) },
         iIntensity: { value: intensity },
         iSpread: { value: spread },
         iFlipX: { value: flipX },
@@ -258,8 +280,8 @@ void main() {
     if (!uniformsRef.current) return;
     const u = uniformsRef.current;
     u.iSpeed.value = speed;
-    u.iRayColor1.value = hexToRgb(rayColor1);
-    u.iRayColor2.value = hexToRgb(rayColor2);
+    u.iRayColor1.value = resolveCSSColorToRGB(rayColor1);
+    u.iRayColor2.value = resolveCSSColorToRGB(rayColor2);
     u.iIntensity.value = intensity;
     u.iSpread.value = spread;
     const [flipX, flipY] = originToFlip(origin);
