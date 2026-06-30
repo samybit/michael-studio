@@ -382,8 +382,13 @@ export default function Home() {
 
           {/* Project Specimen Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {projectsData[activeCategory].map((project) => (
-              <ExpandableProjectCard key={project.title} project={project} />
+            {projectsData[activeCategory].map((project, idx) => (
+              <ExpandableProjectCard 
+                key={project.title} 
+                project={project} 
+                allProjects={projectsData[activeCategory]}
+                projectIndex={idx}
+              />
             ))}
           </div>
         </div>
