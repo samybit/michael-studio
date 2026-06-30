@@ -30,7 +30,7 @@
   z-index: 20;
 }
 
-.staggered-menu-header > * {
+.staggered-menu-header>* {
   pointer-events: auto;
 }
 
@@ -138,7 +138,7 @@
   -webkit-backdrop-filter: blur(12px);
   display: flex;
   flex-direction: column;
-  padding: 6em 2em max(2em, env(safe-area-inset-bottom)) 2em; 
+  padding: 6em 2em max(2em, env(safe-area-inset-bottom)) 2em;
   overflow-y: auto;
   z-index: 10;
   pointer-events: auto;
@@ -282,13 +282,13 @@
     color 0.25s;
   display: inline-block;
   text-decoration: none;
-  padding-right: 1.1em;
+  padding-right: 1.8em;
 }
 
 @media (min-width: 640px) {
   .sm-panel-item {
     font-size: 3.5rem;
-    padding-right: 1.4em;
+    padding-right: 1.8em;
   }
 }
 
@@ -326,14 +326,16 @@
 
 .sm-panel-list[data-numbering] .sm-panel-item::after {
   counter-increment: smItem;
-  content: counter(smItem, decimal-leading-zero);
+  content: "// " counter(smItem, decimal-leading-zero);
   position: absolute;
-  top: 0.15em;
-  right: 2em;
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--sm-accent, #5227ff);
+  top: 0.2em;
+  right: 0; /* Snap to the padding boundary instead of cutting into the text */
+  font-size: 0.35em; /* Proportional scaling relative to the massive text */
+  font-family: var(--font-mono); /* Technical/blueprint look */
+  font-weight: 500;
+  color: var(--muted-foreground); /* Dimmed so it doesn't compete with the link text */
   letter-spacing: 0;
+  white-space: nowrap;
   pointer-events: none;
   user-select: none;
   opacity: var(--sm-num-opacity, 0);
@@ -341,8 +343,8 @@
 
 @media (min-width: 640px) {
   .sm-panel-list[data-numbering] .sm-panel-item::after {
-    right: 2.8em;
-    font-size: 18px;
+    right: 0;
+    font-size: 0.35em;
   }
 }
 
