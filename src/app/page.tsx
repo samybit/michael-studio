@@ -8,8 +8,22 @@ import { DiaTextReveal } from '@/components/magicui/dia-text-reveal';
 import SideRays from '@/components/SideRays';
 import { ExpandableProjectCard } from '@/components/ExpandableProjectCard';
 import { SafeImage } from '@/components/SafeImage';
+import TrailingImage from '@/components/animata/image/trailing-image';
 
 const backgroundImages = ['/bg.jpg', '/bg2.jpg', '/bg3.jpg'];
+
+const projectImages = [
+  "/projects/bathrooms/image-1.jpg",
+  "/projects/bathrooms/image-2.jpg",
+  "/projects/bathrooms/image-3.jpg",
+  "/projects/bathrooms/image-4.jpg",
+  "/projects/bathrooms/bathroom-1.jpg",
+  "/projects/bedrooms/bedroom-1/bedroom-1.jpg",
+  "/projects/bedrooms/bedroom-1/image-1.jpg",
+  "/projects/bedrooms/bedroom-1/image-2.jpg",
+  "/projects/bedrooms/bedroom-1/image-3.jpg",
+  "/projects/bedrooms/bedroom-1/image-4.jpg",
+];
 
 const InstagramIcon = ({ size = 16 }: { size?: number }) => (
   <svg
@@ -338,7 +352,10 @@ export default function Home() {
         </div>
 
         {/* Dynamic Center Arena (Massive Category Links) */}
-        <div className="flex-1 flex flex-col justify-center gap-6 md:gap-8">
+        <TrailingImage
+          images={projectImages}
+          className="flex-1 flex flex-col justify-center gap-6 md:gap-8"
+        >
           <div className="text-[10px] font-mono text-accent tracking-widest uppercase mb-1">
             // SELECT PORTFOLIO
           </div>
@@ -357,7 +374,6 @@ export default function Home() {
                   key={category}
                   href={`#${category.toLowerCase()}`}
                   data-category={category}
-                  // Changed: Mobile base is now 11vw for massive scaling, scaling up heavily on larger screens
                   className="group relative inline-block text-[11.5vw] sm:text-7xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter uppercase leading-none"
                 >
                   <DiaTextReveal
@@ -373,7 +389,7 @@ export default function Home() {
               );
             })}
           </nav>
-        </div>
+        </TrailingImage>
 
         {/* Footer (Mobile/Desktop credits) */}
         <div className="flex justify-between items-center text-[10px] font-mono text-muted-foreground/60 tracking-wider shrink-0 select-none border-t border-border/30 pt-4">
