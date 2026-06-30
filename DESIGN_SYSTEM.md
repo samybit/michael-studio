@@ -49,9 +49,9 @@ Extracted directly from the verified brand palette in `{BAE2A64B-D4EB-49C7-AF67-
 The portfolio displays projects grouped strictly into four distinct structural categories. The build agent must enforce these exact values for content routing, layout filters, and database/sanity schema structures (case-sensitive):
 
 - Kitchens
+- Bedrooms
 - Bathrooms
 - Apartments
-- Bedrooms
 
 ## 4. Structural Layout Grid & Placement (Mobile vs. Desktop)
 

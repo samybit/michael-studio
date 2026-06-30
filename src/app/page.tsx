@@ -141,6 +141,22 @@ export default function Home() {
   const [bgLoaded, setBgLoaded] = useState(false);
   const [bgImage, setBgImage] = useState(backgroundImages[0]);
 
+  // the State to track finger movement on mobile
+  const [touchHoveredCategory, setTouchHoveredCategory] = useState<string | null>(null);
+
+  // Function to detect which category is currently under the moving finger
+  const handleTouchMove = (e: React.TouchEvent) => {
+    const touch = e.touches[0];
+    const element = document.elementFromPoint(touch.clientX, touch.clientY);
+    const category = element?.closest('[data-category]')?.getAttribute('data-category');
+
+    if (category) {
+      setTouchHoveredCategory(category);
+    } else {
+      setTouchHoveredCategory(null);
+    }
+  };
+
   const activeIndex = activeCategory ? categories.indexOf(activeCategory) : -1;
 
   // the Cycle logic effect
@@ -326,24 +342,35 @@ export default function Home() {
           <div className="text-[10px] font-mono text-accent tracking-widest uppercase mb-1">
             // SELECT PORTFOLIO
           </div>
-          <nav className="flex flex-col gap-2 md:gap-4">
-            {categories.map((category, catIdx) => (
-              <a
-                key={category}
-                href={`#${category.toLowerCase()}`}
-                className="group relative inline-block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter uppercase leading-none"
-              >
-                <DiaTextReveal
-                  text={category}
-                  textColor="var(--accent)"
-                  colors={['var(--foreground)', 'var(--accent)', 'var(--border)', 'var(--foreground)']}
-                  duration={1.2}
-                  delay={0.3 + catIdx * 0.2}
-                  className="group-hover:opacity-80 transition-opacity duration-300 pr-2 md:pr-4"
-                />
-                <span className="absolute left-0 bottom-0 w-0 h-[4px] bg-foreground group-hover:w-full transition-all duration-500"></span>
-              </a>
-            ))}
+          <nav
+            className="flex flex-col gap-2 md:gap-4 select-none touch-none"
+            onTouchStart={handleTouchMove}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={() => setTouchHoveredCategory(null)}
+            onMouseLeave={() => setTouchHoveredCategory(null)}
+          >
+            {categories.map((category, catIdx) => {
+              const isHovered = touchHoveredCategory === category;
+
+              return (
+                <a
+                  key={category}
+                  href={`#${category.toLowerCase()}`}
+                  data-category={category}
+                  className="group relative inline-block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter uppercase leading-none"
+                >
+                  <DiaTextReveal
+                    text={category}
+                    textColor="var(--accent)"
+                    colors={['var(--foreground)', 'var(--accent)', 'var(--border)', 'var(--foreground)']}
+                    duration={1.2}
+                    delay={0.3 + catIdx * 0.2}
+                    className={`transition-opacity duration-300 pr-2 md:pr-4 group-hover:opacity-80 ${isHovered ? 'opacity-80' : ''}`}
+                  />
+                  <span className={`absolute left-0 bottom-0 h-[4px] bg-foreground transition-all duration-500 group-hover:w-full ${isHovered ? 'w-full' : 'w-0'}`}></span>
+                </a>
+              );
+            })}
           </nav>
         </div>
 
