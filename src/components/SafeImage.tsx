@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
 export const SafeImage = ({
@@ -26,6 +26,10 @@ export const SafeImage = ({
   const [zooming, setZooming] = useState(false);
   const [coords, setCoords] = useState({ x: 0, y: 0, pxX: 0, pxY: 0, width: 0, height: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setError(false);
+  }, [src]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
