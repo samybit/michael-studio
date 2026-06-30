@@ -53,17 +53,17 @@ const projectsData: Record<Category, Project[]> = {
   Kitchens: [
     {
       title: "Minimalist Matte Kitchen",
-      imagePath: "/assets/projects/kitchens/minimalist-matte-01.jpg",
+      imagePath: "/image-00.jpg",
       description: "A study in matte textures, integrated storage partitions, and monolithic granite workspaces."
     },
     {
       title: "Monolithic Stone Kitchen",
-      imagePath: "/assets/projects/kitchens/monolithic-island-01.jpg",
+      imagePath: "/image-00.jpg",
       description: "Raw marble countertops balanced with custom darkened oak panel overlays."
     },
     {
       title: "Brutalist Concrete Galley",
-      imagePath: "/assets/projects/kitchens/brutalist-concrete-01.jpg",
+      imagePath: "/image-00.jpg",
       description: "Cast-in-place concrete surfaces integrated with industrial steel fixtures."
     }
   ],
@@ -81,29 +81,29 @@ const projectsData: Record<Category, Project[]> = {
     },
     {
       title: "Terrazzo Sanctuary",
-      imagePath: "/assets/projects/bathrooms/terrazzo-monolith-01.jpg",
+      imagePath: "/image-00.jpg",
       description: "Monolithic custom terrazzo basin set against brushed stainless plumbing frameworks."
     },
     {
       title: "Minimalist Wetroom",
-      imagePath: "/assets/projects/bathrooms/minimalist-wetroom-01.jpg",
+      imagePath: "/image-00.jpg",
       description: "Floor-to-ceiling slate tiles with integrated rain shower apertures."
     }
   ],
   Apartments: [
     {
       title: "Industrial Loft Apartment",
-      imagePath: "/assets/projects/apartments/industrial-loft-01.jpg",
+      imagePath: "/image-00.jpg",
       description: "Exposed structural beams, double-height glazing profiles, and modular partition boundaries."
     },
     {
       title: "Tribeca Residence",
-      imagePath: "/assets/projects/apartments/tribeca-residence-01.jpg",
+      imagePath: "/image-00.jpg",
       description: "A high-end loft conversion highlighting clean plaster finishes and solid oak floors."
     },
     {
       title: "Brutalist Flat",
-      imagePath: "/assets/projects/apartments/brutalist-flat-01.jpg",
+      imagePath: "/image-00.jpg",
       description: "Textured raw concrete ceilings paired with minimalist gallery-style lighting profiles."
     }
   ],
@@ -121,12 +121,12 @@ const projectsData: Record<Category, Project[]> = {
     },
     {
       title: "Minimalist Retreat",
-      imagePath: "/assets/projects/bedrooms/minimalist-retreat-01.jpg",
+      imagePath: "/image-00.jpg",
       description: "Low-profile furnishings set against raw acoustic wood paneling contours."
     },
     {
       title: "Concrete Alcove Bedroom",
-      imagePath: "/assets/projects/bedrooms/concrete-alcove-01.jpg",
+      imagePath: "/image-00.jpg",
       description: "Recessed sleeping alcove formed from board-marked architectural concrete."
     }
   ]
