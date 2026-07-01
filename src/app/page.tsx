@@ -224,10 +224,10 @@ export default function Home() {
 
       {/* Blurred Background Image */}
       <div
-        className="absolute inset-0 z-0 pointer-events-none bg-cover bg-center blur-sm scale-110 transition-opacity duration-1000 ease-in-out"
+        className="absolute inset-0 z-0 pointer-events-none bg-cover bg-center blur-m scale-110 transition-opacity duration-1000 ease-in-out"
         style={{
           backgroundImage: `url('${bgImage}')`,
-          opacity: bgLoaded ? 0.25 : 0
+          opacity: bgLoaded ? 0.30 : 0
         }}
       />
 
@@ -481,7 +481,7 @@ export default function Home() {
 
       {/* Contact Studio Overlay */}
       {contactOpen && (
-        <div className="fixed inset-0 z-[60] bg-background/95 backdrop-blur-md flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[60] bg-background/75 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-card border-2 border-foreground p-8 max-w-md w-full relative">
             <button
               onClick={() => setContactOpen(false)}
