@@ -261,7 +261,7 @@ export default function Home() {
             { label: 'Insta', link: 'https://instagram.com/mickel_medhat' },
             { label: 'Behance', link: 'https://behance.net' }
           ]}
-          logoUrl=""
+          logoUrl="/logo.png"
           onContactClick={() => setContactOpen(true)}
         />
       </div>
@@ -309,7 +309,14 @@ export default function Home() {
 
         {/* Desktop Navbar (GooeyNav) */}
         <div className="hidden md:flex justify-between items-center w-full">
-          <span className="text-lg font-black tracking-widest text-foreground">// Michael</span>
+          <div className="h-10 flex items-center shrink-0">
+            <img
+              src="/logo.png"
+              alt="Michael Medhat Logo"
+              className="h-10 w-auto object-contain invert"
+              draggable={false}
+            />
+          </div>
           <div className="flex items-center gap-6">
             <GooeyNav
               items={navItems}
@@ -395,7 +402,7 @@ export default function Home() {
         {/* Footer (Mobile/Desktop credits) */}
         <div className="flex justify-between items-center text-[10px] font-mono text-muted-foreground/60 tracking-wider shrink-0 select-none border-t border-border/30 pt-4">
           <span className="md:hidden">© 2026 Michael Medhat</span>
-          <span>SPATIAL DESIGN SHOWCASE</span>
+          <span>SHOWCASE</span>
 
           {/* Desktop Social Links */}
           <div className="hidden md:flex items-center gap-3">

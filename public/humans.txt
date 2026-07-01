@@ -1,0 +1,8 @@
+/* TEAM */
+  Developer: Samy Barsoum
+  Site: https://samyb.vercel.app
+
+/* SITE */
+  Last update: 2026
+  Standards: Next.js, React, Tailwind CSS, WebGL
+  Components: Framer Motion, GSAP
