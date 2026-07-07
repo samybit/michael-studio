@@ -7,6 +7,7 @@ import VerticalCutReveal from '@/components/fancy/text/vertical-cut-reveal';
 import { DiaTextReveal } from '@/components/magicui/dia-text-reveal';
 import { ExpandableProjectCard } from '@/components/ExpandableProjectCard';
 import { SafeImage } from '@/components/SafeImage';
+import { Logo } from '@/components/Logo';
 import TrailingImage from '@/components/animata/image/trailing-image';
 
 const backgroundImages = ['/bg.jpg', '/bg2.jpg', '/bg3.jpg'];
@@ -279,7 +280,7 @@ export default function Home() {
             { label: 'Insta', link: 'https://instagram.com/mickel_medhat' },
             { label: 'Behance', link: 'https://behance.net' }
           ]}
-          logoUrl="/logo.svg"
+          logo={<Logo className="h-6 w-auto text-foreground" />}
           onContactClick={() => setContactOpen(true)}
           theme={theme}
           onThemeToggle={toggleTheme}
@@ -330,12 +331,7 @@ export default function Home() {
         {/* Desktop Navbar (GooeyNav) */}
         <div className="hidden md:flex justify-between items-center w-full">
           <div className="h-10 flex items-center shrink-0 gap-3">
-            <img
-              src="/logo.svg"
-              alt="Michael Medhat Logo"
-              className="h-10 w-auto object-contain invert"
-              draggable={false}
-            />
+            <Logo className="h-10 w-auto text-foreground" />
             <button 
               onClick={toggleTheme}
               className="w-7 h-7 flex items-center justify-center border border-border text-foreground hover:bg-foreground hover:text-background transition-all duration-300 cursor-pointer overflow-hidden"

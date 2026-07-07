@@ -61,6 +61,7 @@ export interface StaggeredMenuProps {
   onContactClick?: () => void;
   theme?: string;
   onThemeToggle?: () => void;
+  logo?: React.ReactNode;
 }
 
 export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
@@ -82,7 +83,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   onMenuClose,
   onContactClick,
   theme = 'charcoal',
-  onThemeToggle
+  onThemeToggle,
+  logo
 }) => {
   const [open, setOpen] = useState(false);
   const openRef = useRef(false);
@@ -438,7 +440,11 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       </div>
       <header className="staggered-menu-header" aria-label="Main navigation header">
         <div className="sm-logo" aria-label="Logo">
-          {logoUrl ? (
+          {logo ? (
+            <div className="h-6 w-auto flex items-center shrink-0">
+              {logo}
+            </div>
+          ) : logoUrl ? (
             <img
               src={logoUrl}
               alt="Logo"
