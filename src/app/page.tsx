@@ -5,7 +5,6 @@ import StaggeredMenu from '@/components/StaggeredMenu';
 import GooeyNav from '@/components/GooeyNav';
 import VerticalCutReveal from '@/components/fancy/text/vertical-cut-reveal';
 import { DiaTextReveal } from '@/components/magicui/dia-text-reveal';
-import SideRays from '@/components/SideRays';
 import { ExpandableProjectCard } from '@/components/ExpandableProjectCard';
 import { SafeImage } from '@/components/SafeImage';
 import TrailingImage from '@/components/animata/image/trailing-image';
@@ -231,22 +230,7 @@ export default function Home() {
         }}
       />
 
-      {/* Side Rays Background */}
-      <div className="absolute inset-0 pointer-events-none z-0 opacity-40">
-        <SideRays
-          speed={1.1}
-          rayColor1="var(--foreground)"
-          rayColor2="var(--accent)"
-          intensity={2.8}     // Increased brightness at the core
-          spread={1.2}        // Drastically tightened spread for pointier rays
-          origin="top-right"  // Desktop default (overridden to bottom-left automatically on mobile)
-          tilt={15}
-          saturation={1.2}
-          blend={0.6}
-          falloff={1.8}       // Faster fade out to prevent washing out the screen
-          opacity={0.85}
-        />
-      </div>
+
 
       {/* Mobile Navbar Block (StaggeredMenu) */}
       <div className="md:hidden w-full h-[80px] shrink-0 relative z-40 bg-background">
