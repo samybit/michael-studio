@@ -112,6 +112,43 @@
   --scrollbar-thumb-hover: hsl(30 53% 64%);
 }
 
+html.theme-navy, html.theme-navy .dark {
+  --background: hsl(210 20% 9%);          /* Studio Navy #12161A */
+  --foreground: hsl(204 25% 94%);          /* Ice White #EBF1F5 */
+  
+  --card: hsl(210 20% 12%);               /* Slightly lighter navy for contrast */
+  --card-foreground: hsl(204 25% 94%); 
+  --popover: hsl(210 20% 9%);            
+  --popover-foreground: hsl(204 25% 94%);
+  
+  --primary: hsl(204 25% 94%);            /* Ice White #EBF1F5 */
+  --primary-foreground: hsl(210 20% 9%); 
+  
+  --secondary: hsl(208 13% 34%);          /* Anodized Metal #4A5761 */
+  --secondary-foreground: hsl(204 25% 94%);
+  
+  --muted: hsl(210 20% 15%);              /* Muted navy */
+  --muted-foreground: hsl(208 13% 34%);   /* Anodized Metal text */
+  
+  --accent: hsl(152 43% 52%);             /* Sage Mint #52B788 */
+  --accent-foreground: hsl(210 20% 9%);
+  
+  --border: hsl(208 13% 34%);            /* Anodized Metal #4A5761 */
+  --input: hsl(208 13% 34%);           
+  --ring: hsl(152 43% 52%);            
+
+  /* Gooey Nav Colors */
+  --color-1: hsl(204 25% 94%);
+  --color-2: hsl(152 43% 52%);
+  --color-3: hsl(208 13% 34%);
+  --color-4: hsl(210 20% 9%);
+
+  /* Scrollbar Colors */
+  --scrollbar-track: hsl(210 20% 9%);
+  --scrollbar-thumb: hsl(208 13% 34%);
+  --scrollbar-thumb-hover: hsl(152 43% 52%);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

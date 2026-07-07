@@ -59,6 +59,8 @@ export interface StaggeredMenuProps {
   onMenuOpen?: () => void;
   onMenuClose?: () => void;
   onContactClick?: () => void;
+  theme?: string;
+  onThemeToggle?: () => void;
 }
 
 export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
@@ -78,7 +80,9 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   closeOnClickAway = true,
   onMenuOpen,
   onMenuClose,
-  onContactClick
+  onContactClick,
+  theme = 'charcoal',
+  onThemeToggle
 }) => {
   const [open, setOpen] = useState(false);
   const openRef = useRef(false);
@@ -525,6 +529,16 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                   </li>
                 ))}
               </ul>
+            </div>
+          )}
+          {onThemeToggle && (
+            <div className="mt-6 pt-6 border-t border-border/40">
+              <button
+                onClick={onThemeToggle}
+                className="w-full py-2 border border-foreground text-[10px] font-mono uppercase tracking-widest text-foreground hover:bg-foreground hover:text-background transition-all duration-300 pointer-events-auto cursor-pointer"
+              >
+                Theme: {theme === 'charcoal' ? 'Studio Navy' : 'Warm Charcoal'}
+              </button>
             </div>
           )}
         </div>

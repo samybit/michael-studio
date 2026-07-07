@@ -62,6 +62,21 @@ interface Project {
   gallery?: string[];
 }
 
+const ThemeContrastIcon = ({ activeTheme }: { activeTheme: string }) => (
+  <svg 
+    width="12" 
+    height="12" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2.5"
+    className={`transition-transform duration-500 ease-out ${activeTheme === 'navy' ? 'rotate-180' : ''}`}
+  >
+    <rect x="3" y="3" width="18" height="18" />
+    <polygon points="3,21 21,21 21,3" fill="currentColor" />
+  </svg>
+);
+
 const projectsData: Record<Category, Project[]> = {
   Kitchens: [
     {
@@ -149,6 +164,25 @@ const projectsData: Record<Category, Project[]> = {
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState<Category | null>(null);
   const [contactOpen, setContactOpen] = useState(false);
+  const [theme, setTheme] = useState<'charcoal' | 'navy'>('charcoal');
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') as 'charcoal' | 'navy';
+    if (savedTheme) {
+      setTheme(savedTheme);
+      document.documentElement.classList.add(`theme-${savedTheme}`);
+    } else {
+      document.documentElement.classList.add('theme-charcoal');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'charcoal' ? 'navy' : 'charcoal';
+    setTheme(newTheme);
+    document.documentElement.classList.remove('theme-charcoal', 'theme-navy');
+    document.documentElement.classList.add(`theme-${newTheme}`);
+    localStorage.setItem('theme', newTheme);
+  };
 
   // the State for the background cycle
   const [bgLoaded, setBgLoaded] = useState(false);
@@ -247,6 +281,8 @@ export default function Home() {
           ]}
           logoUrl="/logo.svg"
           onContactClick={() => setContactOpen(true)}
+          theme={theme}
+          onThemeToggle={toggleTheme}
         />
       </div>
 
@@ -293,13 +329,21 @@ export default function Home() {
 
         {/* Desktop Navbar (GooeyNav) */}
         <div className="hidden md:flex justify-between items-center w-full">
-          <div className="h-10 flex items-center shrink-0">
+          <div className="h-10 flex items-center shrink-0 gap-3">
             <img
               src="/logo.svg"
               alt="Michael Medhat Logo"
               className="h-10 w-auto object-contain invert"
               draggable={false}
             />
+            <button 
+              onClick={toggleTheme}
+              className="w-7 h-7 flex items-center justify-center border border-border text-foreground hover:bg-foreground hover:text-background transition-all duration-300 cursor-pointer overflow-hidden"
+              aria-label="Toggle Theme"
+              title={theme === 'charcoal' ? 'Switch to Studio Navy' : 'Switch to Warm Charcoal'}
+            >
+              <ThemeContrastIcon activeTheme={theme} />
+            </button>
           </div>
           <div className="flex items-center gap-6">
             <GooeyNav
