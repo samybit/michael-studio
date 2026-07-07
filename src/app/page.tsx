@@ -260,10 +260,10 @@ export default function Home() {
 
       {/* Blurred Background Image */}
       <div
-        className="absolute inset-0 z-0 pointer-events-none bg-cover bg-center blur-m scale-110 transition-opacity duration-1000 ease-in-out"
+        className="absolute inset-0 z-0 pointer-events-none bg-cover bg-center blur-md scale-110 transition-opacity duration-1000 ease-in-out"
         style={{
           backgroundImage: `url('${bgImage}')`,
-          opacity: bgLoaded ? 0.30 : 0
+          opacity: bgLoaded ? 0.25 : 0
         }}
       />
 
@@ -338,7 +338,7 @@ export default function Home() {
               onClick={toggleTheme}
               className="w-7 h-7 flex items-center justify-center border border-border text-foreground hover:bg-foreground hover:text-background transition-all duration-300 cursor-pointer overflow-hidden"
               aria-label="Toggle Theme"
-              title={theme === 'charcoal' ? 'Switch to Studio Navy' : 'Switch to Warm Charcoal'}
+              title={theme === 'charcoal' ? 'Switch to Cream Red' : 'Switch to Warm Charcoal'}
             >
               <ThemeContrastIcon activeTheme={theme} />
             </button>

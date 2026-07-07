@@ -113,40 +113,40 @@
 }
 
 html.theme-navy, html.theme-navy .dark {
-  --background: hsl(210 20% 9%);          /* Studio Navy #12161A */
-  --foreground: hsl(204 25% 94%);          /* Ice White #EBF1F5 */
+  --background: hsl(35 100% 98%);          /* Cream #FFFAF3 */
+  --foreground: hsl(0 0% 8.2%);            /* Charcoal #151515 */
   
-  --card: hsl(210 20% 12%);               /* Slightly lighter navy for contrast */
-  --card-foreground: hsl(204 25% 94%); 
-  --popover: hsl(210 20% 9%);            
-  --popover-foreground: hsl(204 25% 94%);
+  --card: hsl(39 100% 93%);               /* Warm Beige #FFF2DB */
+  --card-foreground: hsl(0 0% 8.2%); 
+  --popover: hsl(35 100% 98%);            
+  --popover-foreground: hsl(0 0% 8.2%);
   
-  --primary: hsl(204 25% 94%);            /* Ice White #EBF1F5 */
-  --primary-foreground: hsl(210 20% 9%); 
+  --primary: hsl(352 92% 55%);            /* Vibrant Crimson #F62440 */
+  --primary-foreground: hsl(35 100% 98%); 
   
-  --secondary: hsl(208 13% 34%);          /* Anodized Metal #4A5761 */
-  --secondary-foreground: hsl(204 25% 94%);
+  --secondary: hsl(39 100% 93%);          /* Warm Beige #FFF2DB */
+  --secondary-foreground: hsl(0 0% 8.2%);
   
-  --muted: hsl(210 20% 15%);              /* Muted navy */
-  --muted-foreground: hsl(208 13% 34%);   /* Anodized Metal text */
+  --muted: hsl(39 100% 90%);              /* Slightly darker warm beige */
+  --muted-foreground: hsl(10 11% 33%);    /* Dark Brown/Grey #5C4D4A */
   
-  --accent: hsl(152 43% 52%);             /* Sage Mint #52B788 */
-  --accent-foreground: hsl(210 20% 9%);
+  --accent: hsl(352 92% 55%);             /* Vibrant Crimson #F62440 */
+  --accent-foreground: hsl(35 100% 98%);
   
-  --border: hsl(208 13% 34%);            /* Anodized Metal #4A5761 */
-  --input: hsl(208 13% 34%);           
-  --ring: hsl(152 43% 52%);            
+  --border: hsl(36 100% 87%);            /* Peach Gold #FFE5BF */
+  --input: hsl(36 100% 87%);           
+  --ring: hsl(352 92% 55%);            
 
   /* Gooey Nav Colors */
-  --color-1: hsl(204 25% 94%);
-  --color-2: hsl(152 43% 52%);
-  --color-3: hsl(208 13% 34%);
-  --color-4: hsl(210 20% 9%);
+  --color-1: hsl(352 92% 55%);
+  --color-2: hsl(36 100% 87%);
+  --color-3: hsl(39 100% 93%);
+  --color-4: hsl(35 100% 98%);
 
   /* Scrollbar Colors */
-  --scrollbar-track: hsl(210 20% 9%);
-  --scrollbar-thumb: hsl(208 13% 34%);
-  --scrollbar-thumb-hover: hsl(152 43% 52%);
+  --scrollbar-track: hsl(35 100% 98%);
+  --scrollbar-thumb: hsl(36 100% 87%);
+  --scrollbar-thumb-hover: hsl(352 92% 55%);
 }
 
 @layer base {

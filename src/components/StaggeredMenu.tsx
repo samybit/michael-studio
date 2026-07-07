@@ -543,7 +543,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                 onClick={onThemeToggle}
                 className="w-full py-2 border border-foreground text-[10px] font-mono uppercase tracking-widest text-foreground hover:bg-foreground hover:text-background transition-all duration-300 pointer-events-auto cursor-pointer"
               >
-                Theme: {theme === 'charcoal' ? 'Studio Navy' : 'Warm Charcoal'}
+                Theme: {theme === 'charcoal' ? 'Cream Red' : 'Warm Charcoal'}
               </button>
             </div>
           )}
