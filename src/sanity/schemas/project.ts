@@ -1,22 +1,24 @@
-export default {
+import { defineField, defineType, defineArrayMember } from 'sanity';
+
+export default defineType({
   name: 'project',
   title: 'Project',
   type: 'document',
   fields: [
-    {
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (Rule: { required: () => unknown }) => Rule.required(),
-    },
-    {
+      validation: (Rule) => Rule.required().min(3).max(120),
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
       type: 'text',
       rows: 3,
-      validation: (Rule: { required: () => unknown }) => Rule.required(),
-    },
-    {
+      validation: (Rule) => Rule.required().min(10).max(500),
+    }),
+    defineField({
       name: 'category',
       title: 'Category',
       type: 'string',
@@ -29,21 +31,26 @@ export default {
         ],
         layout: 'dropdown',
       },
-      validation: (Rule: { required: () => unknown }) => Rule.required(),
-    },
-    {
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'imagePath',
       title: 'Main Thumbnail',
       type: 'image',
       options: { hotspot: true },
-      validation: (Rule: { required: () => unknown }) => Rule.required(),
-    },
-    {
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'gallery',
       title: 'Gallery Images',
       type: 'array',
-      of: [{ type: 'image', options: { hotspot: true } }],
-    },
+      of: [
+        defineArrayMember({
+          type: 'image',
+          options: { hotspot: true },
+        }),
+      ],
+    }),
   ],
   preview: {
     select: {
@@ -52,4 +59,5 @@ export default {
       media: 'imagePath',
     },
   },
-};
+});
+

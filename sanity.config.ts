@@ -10,6 +10,7 @@ export default defineConfig({
   title: 'Michael Medhat Studio',
   projectId,
   dataset,
+  basePath: '/studio',
   plugins: [
     structureTool(),
   ],

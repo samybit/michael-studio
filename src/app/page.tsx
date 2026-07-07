@@ -1,3 +1,4 @@
+import { groq } from 'next-sanity';
 import { sanityClient } from '@/lib/sanity';
 import HomeClient, { type Project } from './HomeClient';
 
@@ -93,7 +94,7 @@ const fallbackData: Record<Category, Project[]> = {
 // ---------------------------------------------------------------------------
 // GROQ query — resolves image references directly to CDN URLs server-side
 // ---------------------------------------------------------------------------
-const PROJECTS_QUERY = `*[_type == "project"]{
+const PROJECTS_QUERY = groq`*[_type == "project"]{
   title,
   description,
   category,
