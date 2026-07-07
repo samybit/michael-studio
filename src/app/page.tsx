@@ -245,7 +245,7 @@ export default function Home() {
             { label: 'Insta', link: 'https://instagram.com/mickel_medhat' },
             { label: 'Behance', link: 'https://behance.net' }
           ]}
-          logoUrl="/logo.png"
+          logoUrl="/logo.svg"
           onContactClick={() => setContactOpen(true)}
         />
       </div>
@@ -295,7 +295,7 @@ export default function Home() {
         <div className="hidden md:flex justify-between items-center w-full">
           <div className="h-10 flex items-center shrink-0">
             <img
-              src="/logo.png"
+              src="/logo.svg"
               alt="Michael Medhat Logo"
               className="h-10 w-auto object-contain invert"
               draggable={false}
@@ -465,8 +465,14 @@ export default function Home() {
 
       {/* Contact Studio Overlay */}
       {contactOpen && (
-        <div className="fixed inset-0 z-[60] bg-background/75 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-card border-2 border-foreground p-8 max-w-md w-full relative">
+        <div
+          onClick={() => setContactOpen(false)}
+          className="fixed inset-0 z-[60] bg-background/75 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="bg-card border-2 border-foreground p-8 max-w-md w-full relative cursor-default"
+          >
             <button
               onClick={() => setContactOpen(false)}
               className="absolute top-4 right-4 text-xs font-mono text-foreground hover:text-accent uppercase cursor-pointer"
