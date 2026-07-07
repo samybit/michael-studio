@@ -49,64 +49,74 @@
 }
 
 :root {
-  --background: hsl(0 0% 0%);           /* #000000 */
-  --foreground: hsl(220 14% 93%);       /* #EAECF0 */
+  --background: hsl(0 0% 8.2%);          /* Charcoal Black #151515 */
+  --foreground: hsl(40 38% 96%);          /* Alabaster White #F9F6F0 */
   
-  --card: hsl(0 0% 4%);                 /* Slightly off-black for card contrast */
-  --card-foreground: hsl(220 14% 93%); 
-  --popover: hsl(0 0% 0%);            
-  --popover-foreground: hsl(220 14% 93%);
+  --card: hsl(0 0% 11%);                 /* Slightly lighter charcoal for card contrast */
+  --card-foreground: hsl(40 38% 96%); 
+  --popover: hsl(0 0% 8.2%);            
+  --popover-foreground: hsl(40 38% 96%);
   
-  --primary: hsl(220 14% 93%);          /* #EAECF0 */
-  --primary-foreground: hsl(0 0% 0%); 
+  --primary: hsl(40 38% 96%);            /* Alabaster White #F9F6F0 */
+  --primary-foreground: hsl(0 0% 8.2%); 
   
-  --secondary: hsl(203 38% 22%);        /* #233D4D */
-  --secondary-foreground: hsl(220 14% 93%);
+  --secondary: hsl(40 12% 59%);          /* Warm Sand #A39B8B */
+  --secondary-foreground: hsl(0 0% 8.2%);
   
-  --muted: hsl(203 38% 12%);            /* Darker slate */
-  --muted-foreground: hsl(203 20% 65%); /* Muted slate text */
+  --muted: hsl(0 0% 15%);                /* Muted charcoal */
+  --muted-foreground: hsl(40 12% 59%);   /* Warm Sand text */
   
-  --accent: hsl(24 99% 59%);            /* #FE7F2D */
-  --accent-foreground: hsl(0 0% 0%);
+  --accent: hsl(30 53% 64%);             /* Ochre Gold #D4A373 */
+  --accent-foreground: hsl(0 0% 8.2%);
   
-  --border: hsl(203 38% 22%);           /* #233D4D */
-  --input: hsl(203 38% 22%);           
-  --ring: hsl(24 99% 59%);            
+  --border: hsl(40 12% 59%);            /* Warm Sand #A39B8B */
+  --input: hsl(40 12% 59%);           
+  --ring: hsl(30 53% 64%);            
   
   --radius: 0rem;
 
   /* Gooey Nav Colors */
-  --color-1: hsl(220 14% 93%);
-  --color-2: hsl(24 99% 59%);
-  --color-3: hsl(203 38% 22%);
-  --color-4: hsl(0 0% 0%);
+  --color-1: hsl(40 38% 96%);
+  --color-2: hsl(30 53% 64%);
+  --color-3: hsl(40 12% 59%);
+  --color-4: hsl(0 0% 8.2%);
+
+  /* Scrollbar Colors */
+  --scrollbar-track: hsl(0 0% 8.2%);
+  --scrollbar-thumb: hsl(40 12% 59%);
+  --scrollbar-thumb-hover: hsl(30 53% 64%);
 }
 
 .dark {
-  --background: hsl(0 0% 0%);
-  --foreground: hsl(220 14% 93%);
-  --card: hsl(0 0% 4%);
-  --card-foreground: hsl(220 14% 93%);
-  --popover: hsl(0 0% 0%);
-  --popover-foreground: hsl(220 14% 93%);
-  --primary: hsl(220 14% 93%);
-  --primary-foreground: hsl(0 0% 0%);
-  --secondary: hsl(203 38% 22%);
-  --secondary-foreground: hsl(220 14% 93%);
-  --muted: hsl(203 38% 12%);
-  --muted-foreground: hsl(203 20% 65%);
-  --accent: hsl(24 99% 59%);
-  --accent-foreground: hsl(0 0% 0%);
-  --border: hsl(203 38% 22%);
-  --input: hsl(203 38% 22%);
-  --ring: hsl(24 99% 59%);
+  --background: hsl(0 0% 8.2%);
+  --foreground: hsl(40 38% 96%);
+  --card: hsl(0 0% 11%);
+  --card-foreground: hsl(40 38% 96%);
+  --popover: hsl(0 0% 8.2%);
+  --popover-foreground: hsl(40 38% 96%);
+  --primary: hsl(40 38% 96%);
+  --primary-foreground: hsl(0 0% 8.2%);
+  --secondary: hsl(40 12% 59%);
+  --secondary-foreground: hsl(0 0% 8.2%);
+  --muted: hsl(0 0% 15%);
+  --muted-foreground: hsl(40 12% 59%);
+  --accent: hsl(30 53% 64%);
+  --accent-foreground: hsl(0 0% 8.2%);
+  --border: hsl(40 12% 59%);
+  --input: hsl(40 12% 59%);
+  --ring: hsl(30 53% 64%);
+
+  /* Scrollbar Colors */
+  --scrollbar-track: hsl(0 0% 8.2%);
+  --scrollbar-thumb: hsl(40 12% 59%);
+  --scrollbar-thumb-hover: hsl(30 53% 64%);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
     scrollbar-width: thin;
-    scrollbar-color: hsl(167 20% 23%) hsl(0 10% 4%);
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   }
   body {
     @apply bg-background text-foreground;
@@ -125,13 +135,13 @@
     height: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: hsl(0 10% 4%);
+    background: var(--scrollbar-track);
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(167 20% 23%);
+    background: var(--scrollbar-thumb);
     border-radius: 0px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(169 34% 38%);
+    background: var(--scrollbar-thumb-hover);
   }
 }
