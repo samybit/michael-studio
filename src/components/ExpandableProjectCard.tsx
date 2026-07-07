@@ -83,19 +83,28 @@ export function ExpandableProjectCard({
       </motion.div>
 
       {mounted && createPortal(
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           {isExpanded && (
             <motion.div
+              key="backdrop"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12 bg-background/75 backdrop-blur-sm"
+              className="fixed inset-0 z-[100] bg-background/75 backdrop-blur-sm"
+              onClick={() => setIsExpanded(false)}
+            />
+          )}
+          {isExpanded && (
+            <motion.div
+              key={`modal-wrapper-${currentProject.title}`}
+              className="fixed inset-0 z-[101] flex items-center justify-center p-4 md:p-12 pointer-events-none"
             >
               <motion.div 
-                layoutId={`card-container-${project.title.replace(/\s+/g, '-')}`}
+                layoutId={`card-container-${currentProject.title.replace(/\s+/g, '-')}`}
                 className="w-full max-w-6xl max-h-full bg-background border-2 border-foreground flex flex-col pointer-events-auto shadow-2xl overflow-hidden"
+                onClick={(e) => e.stopPropagation()}
               >
-                <div className="w-full h-full overflow-y-auto flex flex-col">
+                  <div className="w-full h-full overflow-y-auto flex flex-col">
                   <div className="sticky top-0 z-10 flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 md:p-6 border-b border-border bg-background gap-4">
                      <motion.h3 
                        layoutId={`card-title-${currentProject.title.replace(/\s+/g, '-')}`}

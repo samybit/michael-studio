@@ -66,17 +66,17 @@ const projectsData: Record<Category, Project[]> = {
   Kitchens: [
     {
       title: "Minimalist Matte Kitchen",
-      imagePath: "/image-00.jpg",
+      imagePath: "/placeholder.jpg",
       description: "A study in matte textures, integrated storage partitions, and monolithic granite workspaces."
     },
     {
       title: "Monolithic Stone Kitchen",
-      imagePath: "/image-00.jpg",
+      imagePath: "/placeholder.jpg",
       description: "Raw marble countertops balanced with custom darkened oak panel overlays."
     },
     {
       title: "Brutalist Concrete Galley",
-      imagePath: "/image-00.jpg",
+      imagePath: "/placeholder.jpg",
       description: "Cast-in-place concrete surfaces integrated with industrial steel fixtures."
     }
   ],
@@ -94,29 +94,29 @@ const projectsData: Record<Category, Project[]> = {
     },
     {
       title: "Terrazzo Sanctuary",
-      imagePath: "/image-00.jpg",
+      imagePath: "/placeholder.jpg",
       description: "Monolithic custom terrazzo basin set against brushed stainless plumbing frameworks."
     },
     {
       title: "Minimalist Wetroom",
-      imagePath: "/image-00.jpg",
+      imagePath: "/placeholder.jpg",
       description: "Floor-to-ceiling slate tiles with integrated rain shower apertures."
     }
   ],
   Apartments: [
     {
       title: "Industrial Loft Apartment",
-      imagePath: "/image-00.jpg",
+      imagePath: "/placeholder.jpg",
       description: "Exposed structural beams, double-height glazing profiles, and modular partition boundaries."
     },
     {
       title: "Tribeca Residence",
-      imagePath: "/image-00.jpg",
+      imagePath: "/placeholder.jpg",
       description: "A high-end loft conversion highlighting clean plaster finishes and solid oak floors."
     },
     {
       title: "Brutalist Flat",
-      imagePath: "/image-00.jpg",
+      imagePath: "/placeholder.jpg",
       description: "Textured raw concrete ceilings paired with minimalist gallery-style lighting profiles."
     }
   ],
@@ -134,12 +134,12 @@ const projectsData: Record<Category, Project[]> = {
     },
     {
       title: "Minimalist Retreat",
-      imagePath: "/image-00.jpg",
+      imagePath: "/placeholder.jpg",
       description: "Low-profile furnishings set against raw acoustic wood paneling contours."
     },
     {
       title: "Concrete Alcove Bedroom",
-      imagePath: "/image-00.jpg",
+      imagePath: "/placeholder.jpg",
       description: "Recessed sleeping alcove formed from board-marked architectural concrete."
     }
   ]
