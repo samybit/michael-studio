@@ -110,7 +110,7 @@ const AnimatedImage = forwardRef<AnimatedImageRef, AnimatedImageProps>(
         alt=""
         aria-hidden
         draggable={false}
-        className="pointer-events-none absolute h-56 w-44 -translate-x-1/2 -translate-y-1/2 select-none object-cover border border-border bg-card p-1 shadow-2xl"
+        className="pointer-events-none absolute h-56 w-44 -translate-x-1/2 -translate-y-1/2 select-none object-cover shadow-2xl"
       />
     );
   },
