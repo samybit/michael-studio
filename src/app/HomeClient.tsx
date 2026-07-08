@@ -64,12 +64,12 @@ export interface Project {
 }
 
 const ThemeContrastIcon = ({ activeTheme }: { activeTheme: string }) => (
-  <svg 
-    width="12" 
-    height="12" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
+  <svg
+    width="12"
+    height="12"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
     strokeWidth="2.5"
     className={`transition-transform duration-500 ease-out ${activeTheme === 'navy' ? 'rotate-180' : ''}`}
   >
@@ -214,7 +214,7 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
           <div className="border border-border p-1 bg-card">
             <div className="w-full h-[280px] relative overflow-hidden">
               <SafeImage
-                src="/profile_photo.jpeg"
+                src="/profile_photo.jpg"
                 alt="Michael Medhat"
                 className="w-full h-full object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-700"
                 type="person"
@@ -253,7 +253,7 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
         <div className="hidden md:flex justify-between items-center w-full">
           <div className="h-10 flex items-center shrink-0 gap-3">
             <Logo className="h-10 w-auto text-foreground" />
-            <button 
+            <button
               onClick={toggleTheme}
               className="w-7 h-7 flex items-center justify-center border border-border text-foreground hover:bg-foreground hover:text-background transition-all duration-300 cursor-pointer overflow-hidden"
               aria-label="Toggle Theme"
@@ -284,7 +284,7 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 relative overflow-hidden shrink-0">
               <SafeImage
-                src="/profile_photo.jpeg"
+                src="/profile_photo.jpg"
                 alt="Michael Medhat"
                 className="w-full h-full object-cover border border-border grayscale"
                 type="person"

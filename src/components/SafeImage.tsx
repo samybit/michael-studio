@@ -11,7 +11,8 @@ export const SafeImage = ({
   fallbackText = "image to be added",
   fallbackClassName = "",
   fill = true,
-  zoom = false
+  zoom = false,
+  sizes
 }: {
   src: string;
   alt: string;
@@ -21,6 +22,7 @@ export const SafeImage = ({
   fallbackClassName?: string;
   fill?: boolean;
   zoom?: boolean;
+  sizes?: string;
 }) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -108,6 +110,7 @@ export const SafeImage = ({
           src={src}
           alt={alt}
           fill
+          sizes={sizes || "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"}
           className={`${className} transition-opacity duration-350 ${loading ? 'opacity-0' : 'opacity-100'}`}
           onLoad={() => setLoading(false)}
           onError={() => {
