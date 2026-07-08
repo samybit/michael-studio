@@ -49,23 +49,7 @@ const fallbackData: Record<Category, Project[]> = {
       description: 'Floor-to-ceiling slate tiles with integrated rain shower apertures.',
     },
   ],
-  Apartments: [
-    {
-      title: 'Industrial Loft Apartment',
-      imagePath: '/placeholder.jpg',
-      description: 'Exposed structural beams, double-height glazing profiles, and modular partition boundaries.',
-    },
-    {
-      title: 'Tribeca Residence',
-      imagePath: '/placeholder.jpg',
-      description: 'A high-end loft conversion highlighting clean plaster finishes and solid oak floors.',
-    },
-    {
-      title: 'Brutalist Flat',
-      imagePath: '/placeholder.jpg',
-      description: 'Textured raw concrete ceilings paired with minimalist gallery-style lighting profiles.',
-    },
-  ],
+  Apartments: [],
   Bedrooms: [
     {
       title: 'Editorial Suite',

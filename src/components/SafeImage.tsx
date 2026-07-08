@@ -23,12 +23,14 @@ export const SafeImage = ({
   zoom?: boolean;
 }) => {
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [zooming, setZooming] = useState(false);
   const [coords, setCoords] = useState({ x: 0, y: 0, pxX: 0, pxY: 0, width: 0, height: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setError(false);
+    setLoading(true);
   }, [src]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -100,13 +102,20 @@ export const SafeImage = ({
 
   if (fill) {
     return (
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        className={className}
-        onError={() => setError(true)}
-      />
+      <>
+        {loading && <div className="absolute inset-0 bg-muted animate-pulse z-[2]" />}
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          className={`${className} transition-opacity duration-350 ${loading ? 'opacity-0' : 'opacity-100'}`}
+          onLoad={() => setLoading(false)}
+          onError={() => {
+            setError(true);
+            setLoading(false);
+          }}
+        />
+      </>
     );
   }
 
@@ -125,17 +134,29 @@ export const SafeImage = ({
         onTouchEnd={() => setZooming(false)}
         onTouchMove={handleTouchMove}
       >
+        {loading && <div className="w-full aspect-[4/3] bg-muted animate-pulse" />}
         <Image
           src={src}
           alt={alt}
           width={0}
           height={0}
           sizes="100vw"
-          style={{ width: '100%', height: 'auto' }}
-          className={className}
-          onError={() => setError(true)}
+          style={{
+            width: '100%',
+            height: 'auto',
+            position: loading ? 'absolute' : 'relative',
+            opacity: loading ? 0 : 1,
+            top: 0,
+            left: 0
+          }}
+          className={`${className} transition-opacity duration-350`}
+          onLoad={() => setLoading(false)}
+          onError={() => {
+            setError(true);
+            setLoading(false);
+          }}
         />
-        {zooming && (
+        {zooming && !loading && (
           <div
             className="absolute pointer-events-none rounded-full border border-foreground shadow-2xl bg-no-repeat z-10"
             style={{
@@ -155,15 +176,29 @@ export const SafeImage = ({
   }
 
   return (
-    <Image
-      src={src}
-      alt={alt}
-      width={0}
-      height={0}
-      sizes="100vw"
-      style={{ width: '100%', height: 'auto' }}
-      className={className}
-      onError={() => setError(true)}
-    />
+    <div className="relative w-full">
+      {loading && <div className="w-full aspect-[4/3] bg-muted animate-pulse" />}
+      <Image
+        src={src}
+        alt={alt}
+        width={0}
+        height={0}
+        sizes="100vw"
+        style={{
+          width: '100%',
+          height: 'auto',
+          position: loading ? 'absolute' : 'relative',
+          opacity: loading ? 0 : 1,
+          top: 0,
+          left: 0
+        }}
+        className={`${className} transition-opacity duration-350`}
+        onLoad={() => setLoading(false)}
+        onError={() => {
+          setError(true);
+          setLoading(false);
+        }}
+      />
+    </div>
   );
 };

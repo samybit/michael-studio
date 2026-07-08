@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from 'react';
 import StaggeredMenu from '@/components/StaggeredMenu';
 import GooeyNav from '@/components/GooeyNav';
-import VariableProximity from '@/components/VariableProximity';
 import VerticalCutReveal from '@/components/fancy/text/vertical-cut-reveal';
 import { DiaTextReveal } from '@/components/magicui/dia-text-reveal';
 import { ExpandableProjectCard } from '@/components/ExpandableProjectCard';
@@ -331,15 +330,9 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
                   data-category={category}
                   className="group relative z-10 inline-block text-[11.5vw] sm:text-7xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter uppercase leading-none text-accent"
                 >
-                  <VariableProximity
-                    label={category}
-                    containerRef={categoriesContainerRef}
-                    fromWeight={300}
-                    toWeight={700}
-                    radius={160}
-                    falloff="linear"
-                    className={`transition-colors duration-300 pr-2 md:pr-4 group-hover:text-foreground ${isHovered ? 'text-foreground' : ''}`}
-                  />
+                  <span className={`transition-colors duration-300 pr-2 md:pr-4 group-hover:text-foreground ${isHovered ? 'text-foreground' : ''}`}>
+                    {category}
+                  </span>
                   <span className={`absolute left-0 bottom-0 h-[4px] bg-foreground transition-all duration-500 group-hover:w-full ${isHovered ? 'w-full' : 'w-0'}`}></span>
                 </a>
               );
