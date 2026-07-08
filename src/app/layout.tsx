@@ -37,6 +37,13 @@ export const metadata: Metadata = {
     description: "Crafting architectural statements that fuse raw structural honesty with refined details.",
     images: ["/opengraph.png"],
   },
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
