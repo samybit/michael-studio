@@ -309,14 +309,24 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
             </div>
             <div>
               <h2 className="text-xs font-mono font-bold tracking-widest uppercase text-foreground">Michael Medhat</h2>
-              <p className="text-[10px] text-muted-foreground">Architect, Interior and exterior Designer</p>
             </div>
           </div>
-          <p className="text-[11px] leading-relaxed text-muted-foreground mt-1">
+          
+          <div className="text-[9px] font-mono text-accent tracking-widest mt-1">
+            // AVAILABLE: FULL-TIME / FREELANCE
+          </div>
+
+          <p className="text-[11px] leading-relaxed text-muted-foreground">
             <VerticalCutReveal splitBy="words" staggerDuration={0.05} transition={{ type: 'spring', stiffness: 170, damping: 22, delay: 0.3 }}>
-              Crafting architectural statements that fuse raw structural honesty with refined details.
+              Crafting architectural statements that fuse raw structural honesty with refined details. Transforming domestic spaces into curated spatial experiences.
             </VerticalCutReveal>
           </p>
+
+          <div className="flex flex-wrap gap-x-3 gap-y-1 text-[9px] font-mono text-muted-foreground/80 border-t border-border/20 pt-2 mt-1">
+            <span>• ARCHITECT</span>
+            <span>• INTERIOR DESIGNER</span>
+            <span>• EXTERIOR DESIGNER</span>
+          </div>
         </div>
 
         {/* Dynamic Center Arena (Massive Category Links) */}
