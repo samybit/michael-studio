@@ -42,6 +42,23 @@ export function ExpandableProjectCard({
     }
   }, [isExpanded, projectIndex]);
 
+  // Close lightbox or expanded project modal when Escape key is pressed
+  useEffect(() => {
+    if (!isExpanded) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (lightboxImage) {
+          setLightboxImage(null);
+        } else {
+          setIsExpanded(false);
+        }
+        e.stopPropagation();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown, { capture: true });
+    return () => window.removeEventListener('keydown', handleKeyDown, { capture: true });
+  }, [isExpanded, lightboxImage]);
+
   const currentProject = allProjects[currentIndex] || project;
 
   const handlePrev = (e: React.MouseEvent) => {

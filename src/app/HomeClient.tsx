@@ -161,6 +161,21 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
+  // Close contact modal or active category list when Escape key is pressed
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (contactOpen) {
+          setContactOpen(false);
+        } else if (activeCategory) {
+          closeCategory();
+        }
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [contactOpen, activeCategory]);
+
   const closeCategory = () => {
     window.location.hash = '';
   };
@@ -224,14 +239,14 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
             </div>
           </div>
           <div className="flex flex-col gap-2">
-            <span className="text-accent text-xs font-mono uppercase tracking-widest">// STUDIO FOCUS</span>
+            <span className="text-accent text-xs font-mono uppercase tracking-widest">// AVAILABLE: FULL-TIME / FREELANCE</span>
             <h1 className="text-4xl font-black tracking-tighter text-foreground uppercase leading-none">
               Michael Medhat
             </h1>
             <div className="flex flex-col gap-1 mt-2 text-xs font-mono text-muted-foreground">
-              <p><VerticalCutReveal staggerDuration={0.04} splitBy="characters">• SPATIAL DIRECTOR</VerticalCutReveal></p>
-              <p><VerticalCutReveal staggerDuration={0.04} splitBy="characters" transition={{ type: 'spring', stiffness: 190, damping: 22, delay: 0.25 }}>• STRUCTURAL SCHEMES</VerticalCutReveal></p>
-              <p><VerticalCutReveal staggerDuration={0.04} splitBy="characters" transition={{ type: 'spring', stiffness: 190, damping: 22, delay: 0.5 }}>• BRUTALIST ORCHESTRATIONS</VerticalCutReveal></p>
+              <p><VerticalCutReveal staggerDuration={0.04} splitBy="characters">• ARCHITECT</VerticalCutReveal></p>
+              <p><VerticalCutReveal staggerDuration={0.04} splitBy="characters" transition={{ type: 'spring', stiffness: 190, damping: 22, delay: 0.25 }}>• INTERIOR DESIGNER</VerticalCutReveal></p>
+              <p><VerticalCutReveal staggerDuration={0.04} splitBy="characters" transition={{ type: 'spring', stiffness: 190, damping: 22, delay: 0.5 }}>• EXTERIOR DESIGNER</VerticalCutReveal></p>
             </div>
           </div>
           <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
@@ -294,7 +309,7 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
             </div>
             <div>
               <h2 className="text-xs font-mono font-bold tracking-widest uppercase text-foreground">Michael Medhat</h2>
-              <p className="text-[10px] text-muted-foreground">Lead Spatial Architect</p>
+              <p className="text-[10px] text-muted-foreground">Architect, Interior and exterior Designer</p>
             </div>
           </div>
           <p className="text-[11px] leading-relaxed text-muted-foreground mt-1">
@@ -332,7 +347,14 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
                   className="group relative z-10 inline-block text-[11.5vw] sm:text-7xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter uppercase leading-none text-accent"
                 >
                   <span className={`transition-colors duration-300 pr-2 md:pr-4 group-hover:text-foreground ${isHovered ? 'text-foreground' : ''}`}>
-                    {category}
+                    <DiaTextReveal
+                      text={category}
+                      textColor="var(--accent)"
+                      colors={['var(--secondary)', 'var(--accent)', 'var(--foreground)']}
+                      duration={1.2}
+                      delay={catIdx * 0.15}
+                      className="group-hover:!text-foreground transition-colors duration-300 pr-1 md:pr-2"
+                    />
                   </span>
                   <span className={`absolute left-0 bottom-0 h-[4px] bg-foreground transition-all duration-500 group-hover:w-full ${isHovered ? 'w-full' : 'w-0'}`}></span>
                 </a>
