@@ -459,38 +459,57 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
       )}
 
       {/* Contact Studio Overlay */}
-      {contactOpen && (
+      <div
+        onClick={() => setContactOpen(false)}
+        className={`fixed inset-0 z-[60] bg-background/75 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer [perspective:1000px] transition-opacity duration-600 ${
+          contactOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <style>{`
+          .contact-card-3d {
+            transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+          }
+          .contact-card-closed {
+            opacity: 0;
+            transform: translate3d(0, 35px, -120px) rotateX(-15deg);
+            pointer-events: none;
+          }
+          .contact-card-open {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) rotateX(0deg);
+            pointer-events: auto;
+          }
+        `}</style>
         <div
-          onClick={() => setContactOpen(false)}
-          className="fixed inset-0 z-[60] bg-background/75 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer"
+          onClick={(e) => e.stopPropagation()}
+          className={`bg-card border-2 border-foreground p-8 max-w-md w-full relative cursor-default shadow-2xl contact-card-3d ${
+            contactOpen ? 'contact-card-open' : 'contact-card-closed'
+          }`}
         >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="bg-card border-2 border-foreground p-8 max-w-md w-full relative cursor-default"
+          <button
+            onClick={() => setContactOpen(false)}
+            className="absolute top-4 right-4 text-xs font-mono text-foreground hover:text-accent uppercase cursor-pointer"
           >
-            <button
-              onClick={() => setContactOpen(false)}
-              className="absolute top-4 right-4 text-xs font-mono text-foreground hover:text-accent uppercase cursor-pointer"
-            >
-              [Close]
-            </button>
-            <h3 className="text-2xl font-black uppercase text-foreground tracking-tighter mb-4">// CONTACT STUDIO</h3>
-            <div className="flex flex-col gap-4 text-sm font-mono text-muted-foreground">
-              <div>
-                <span className="text-accent text-xs font-bold block mb-1">EMAIL</span>
-                <a href="mailto:michael@arch.com" className="text-foreground hover:underline">michael@arch.com</a>
-              </div>
-              <div>
-                <span className="text-accent text-xs font-bold block mb-1">OFFICES</span>
-                <span className="text-foreground">Cairo / Minya</span>
-              </div>
-              <div className="border-t border-border pt-4 mt-2">
-                <p className="text-xs">Available for selective private residential commissions.</p>
-              </div>
+            [Close]
+          </button>
+          <h3 className="text-2xl font-black uppercase text-foreground tracking-tighter mb-4">// CONTACT STUDIO</h3>
+          <div className="flex flex-col gap-4 text-sm font-mono text-muted-foreground">
+            <div>
+              <span className="text-accent text-xs font-bold block mb-1">EMAIL</span>
+              <a href="mailto:michael@arch.com" className="text-foreground hover:underline">michael@arch.com</a>
+            </div>
+            <div>
+              <span className="text-accent text-xs font-bold block mb-1">OFFICES</span>
+              <span className="text-foreground">Cairo / Minya</span>
+            </div>
+            <div className="border-t border-border pt-4 mt-2">
+              <p className="text-xs">Available for selective private residential commissions.</p>
             </div>
           </div>
         </div>
-      )}
+      </div>
 
     </main>
   );
