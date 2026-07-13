@@ -199,7 +199,7 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
           items={menuItems}
           socialItems={[
             { label: 'Insta', link: 'https://instagram.com/mickel_medhat' },
-            { label: 'Behance', link: 'https://behance.net' }
+            { label: 'Behance', link: 'https://behance.net/michael-medhat' }
           ]}
           logo={<Logo className="h-6 w-auto text-foreground" />}
           onContactClick={() => setContactOpen(true)}
@@ -357,7 +357,7 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
               <InstagramIcon size={14} />
             </a>
             <a
-              href="https://behance.net"
+              href="https://behance.net/michael-medhat"
               target="_blank"
               rel="noopener noreferrer"
               className="w-8 h-8 flex items-center justify-center border border-border hover:border-foreground text-accent hover:text-foreground bg-card transition-all duration-300 pointer-events-auto"
