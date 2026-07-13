@@ -29,27 +29,34 @@ const fallbackData: Record<Category, Project[]> = {
   Bathrooms: [
     {
       title: 'Concrete Spa Chamber',
-      imagePath: '/projects/bathrooms/bathroom-1.jpg',
+      imagePath: '/projects/bathrooms/bathroom-1/bathroom-1.jpg',
       description: 'Polished concrete walls offset by warm cedar slats and a sunken stone tub.',
       gallery: [
-        '/projects/bathrooms/image-1.jpg',
-        '/projects/bathrooms/image-2.jpg',
-        '/projects/bathrooms/image-3.jpg',
-        '/projects/bathrooms/image-4.jpg',
+        '/projects/bathrooms/bathroom-1/image-1.jpg',
+        '/projects/bathrooms/bathroom-1/image-2.jpg',
+        '/projects/bathrooms/bathroom-1/image-3.jpg',
+        '/projects/bathrooms/bathroom-1/image-4.jpg',
+      ],
+    },
+  ],
+  Apartments: [
+    {
+      title: 'Brutalist Concrete Loft',
+      imagePath: '/projects/apartments/apartment-1/apartment-1.jpg',
+      description: 'A study in material honesty, featuring board-marked concrete structures, double-height volumes, and minimalist furnishings that frame open urban views.',
+      gallery: [
+        '/projects/apartments/apartment-1/image-1.jpg',
       ],
     },
     {
-      title: 'Terrazzo Sanctuary',
-      imagePath: '/placeholder.jpg',
-      description: 'Monolithic custom terrazzo basin set against brushed stainless plumbing frameworks.',
-    },
-    {
-      title: 'Minimalist Wetroom',
-      imagePath: '/placeholder.jpg',
-      description: 'Floor-to-ceiling slate tiles with integrated rain shower apertures.',
+      title: 'Minimalist Plaster Penthouse',
+      imagePath: '/projects/apartments/apartment-2/apartment-2.jpg',
+      description: 'An expansive high-floor residence defined by off-white textured plaster partitions, monolithic stone islands, and structural frames that embrace city skyline silhouettes.',
+      gallery: [
+        '/projects/apartments/apartment-2/image-1.jpg',
+      ],
     },
   ],
-  Apartments: [],
   Bedrooms: [
     {
       title: 'Editorial Suite',
@@ -61,16 +68,6 @@ const fallbackData: Record<Category, Project[]> = {
         '/projects/bedrooms/bedroom-1/image-3.jpg',
         '/projects/bedrooms/bedroom-1/image-4.jpg',
       ],
-    },
-    {
-      title: 'Minimalist Retreat',
-      imagePath: '/placeholder.jpg',
-      description: 'Low-profile furnishings set against raw acoustic wood paneling contours.',
-    },
-    {
-      title: 'Concrete Alcove Bedroom',
-      imagePath: '/placeholder.jpg',
-      description: 'Recessed sleeping alcove formed from board-marked architectural concrete.',
     },
   ],
 };

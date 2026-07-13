@@ -13,16 +13,20 @@ import TrailingImage from '@/components/animata/image/trailing-image';
 const backgroundImages = ['/bg.jpg', '/bg2.jpg', '/bg3.jpg'];
 
 const projectImages = [
-  "/projects/bathrooms/image-1.jpg",
-  "/projects/bathrooms/image-2.jpg",
-  "/projects/bathrooms/image-3.jpg",
-  "/projects/bathrooms/image-4.jpg",
-  "/projects/bathrooms/bathroom-1.jpg",
+  "/projects/bathrooms/bathroom-1/image-1.jpg",
+  "/projects/bathrooms/bathroom-1/image-2.jpg",
+  "/projects/bathrooms/bathroom-1/image-3.jpg",
+  "/projects/bathrooms/bathroom-1/image-4.jpg",
+  "/projects/bathrooms/bathroom-1/bathroom-1.jpg",
   "/projects/bedrooms/bedroom-1/bedroom-1.jpg",
   "/projects/bedrooms/bedroom-1/image-1.jpg",
   "/projects/bedrooms/bedroom-1/image-2.jpg",
   "/projects/bedrooms/bedroom-1/image-3.jpg",
   "/projects/bedrooms/bedroom-1/image-4.jpg",
+  "/projects/apartments/apartment-1/apartment-1.jpg",
+  "/projects/apartments/apartment-1/image-1.jpg",
+  "/projects/apartments/apartment-2/apartment-2.jpg",
+  "/projects/apartments/apartment-2/image-1.jpg",
 ];
 
 const InstagramIcon = ({ size = 16 }: { size?: number }) => (
