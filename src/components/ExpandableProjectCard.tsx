@@ -15,11 +15,15 @@ interface Project {
 export function ExpandableProjectCard({ 
   project,
   allProjects = [],
-  projectIndex = 0
+  projectIndex = 0,
+  hoveredTitle = null,
+  setHoveredTitle
 }: { 
   project: Project;
   allProjects?: Project[];
   projectIndex?: number;
+  hoveredTitle?: string | null;
+  setHoveredTitle?: (title: string | null) => void;
 }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -60,12 +64,23 @@ export function ExpandableProjectCard({
     }
   };
 
+  const isHovered = hoveredTitle === project.title;
+  const isDimmed = hoveredTitle !== null && hoveredTitle !== project.title;
+
   return (
     <>
       <motion.div 
         layoutId={`card-container-${project.title.replace(/\s+/g, '-')}`}
-        className="border border-border p-4 bg-card flex flex-col gap-4 cursor-pointer hover:bg-border/20 transition-colors duration-300"
+        className={`border p-4 bg-card flex flex-col gap-4 cursor-pointer transition-[border-color,opacity,box-shadow,filter] duration-300 ${
+          isHovered 
+            ? 'border-accent shadow-[4px_4px_0px_0px_var(--accent)]' 
+            : isDimmed 
+              ? 'border-border/30 opacity-40 grayscale contrast-75' 
+              : 'border-border shadow-sm'
+        }`}
         onClick={() => setIsExpanded(true)}
+        onMouseEnter={() => setHoveredTitle?.(project.title)}
+        onMouseLeave={() => setHoveredTitle?.(null)}
       >
         <motion.div layoutId={`card-image-container-${project.title.replace(/\s+/g, '-')}`} className="w-full h-64 bg-background border border-border relative overflow-hidden group">
           <SafeImage

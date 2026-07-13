@@ -86,6 +86,7 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
   const [activeCategory, setActiveCategory] = useState<Category | null>(null);
   const [contactOpen, setContactOpen] = useState(false);
   const [theme, setTheme] = useState<'charcoal' | 'navy'>('charcoal');
+  const [hoveredProjectTitle, setHoveredProjectTitle] = useState<string | null>(null);
   const categoriesContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -406,7 +407,6 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
             </div>
           </div>
 
-          {/* Project Specimen Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {projectsData[activeCategory].map((project, idx) => (
               <ExpandableProjectCard
@@ -414,6 +414,8 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
                 project={project}
                 allProjects={projectsData[activeCategory]}
                 projectIndex={idx}
+                hoveredTitle={hoveredProjectTitle}
+                setHoveredTitle={setHoveredProjectTitle}
               />
             ))}
           </div>
