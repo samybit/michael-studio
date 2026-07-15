@@ -30,6 +30,29 @@ export const SafeImage = ({
   const [coords, setCoords] = useState({ x: 0, y: 0, pxX: 0, pxY: 0, width: 0, height: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const isSvg = typeof src === "string" && src.endsWith(".svg");
+
+  if (isSvg) {
+    return (
+      <img
+        src={src}
+        alt={alt}
+        className={className}
+        style={
+          fill
+            ? {
+                position: "absolute",
+                height: "100%",
+                width: "100%",
+                inset: 0,
+                objectFit: "cover",
+              }
+            : undefined
+        }
+      />
+    );
+  }
+
   useEffect(() => {
     setError(false);
     setLoading(true);

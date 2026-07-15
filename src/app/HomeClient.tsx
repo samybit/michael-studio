@@ -236,7 +236,7 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
           <div className="border border-border p-1 bg-card">
             <div className="w-full h-[280px] relative overflow-hidden">
               <SafeImage
-                src="/profile_photo.jpg"
+                src="/profile_photo.svg"
                 alt="Michael Medhat"
                 className="w-full h-full object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-700"
                 type="person"
@@ -257,7 +257,7 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
           </div>
           <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
             <VerticalCutReveal splitBy="words" staggerDuration={0.06} transition={{ type: 'spring', stiffness: 160, damping: 22, delay: 0.6 }}>
-              Crafting architectural statements that fuse raw structural honesty with refined details. Transforming domestic spaces into curated spatial experiences.
+              A graduate of the Faculty of Fine Arts, specializing in architectural and interior design. Creating modern spaces that combine clean structural lines with functional, minimal detailing.
             </VerticalCutReveal>
           </p>
         </div>
@@ -306,7 +306,7 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 relative overflow-hidden shrink-0">
               <SafeImage
-                src="/profile_photo.jpg"
+                src="/profile_photo.svg"
                 alt="Michael Medhat"
                 className="w-full h-full object-cover border border-border grayscale"
                 type="person"
@@ -317,14 +317,14 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
               <h2 className="text-xs font-mono font-bold tracking-widest uppercase text-foreground">Michael Medhat</h2>
             </div>
           </div>
-          
+
           <div className="text-[9px] font-mono text-accent tracking-widest mt-1">
             // AVAILABLE: FULL-TIME / FREELANCE
           </div>
 
           <p className="text-[11px] leading-relaxed text-muted-foreground">
             <VerticalCutReveal splitBy="words" staggerDuration={0.05} transition={{ type: 'spring', stiffness: 170, damping: 22, delay: 0.3 }}>
-              Crafting architectural statements that fuse raw structural honesty with refined details. Transforming domestic spaces into curated spatial experiences.
+              A graduate of the Faculty of Fine Arts, specializing in architectural and interior design. Creating modern spaces that combine clean structural lines with functional, minimal detailing.
             </VerticalCutReveal>
           </p>
 
@@ -463,9 +463,8 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
       {/* Contact Studio Overlay */}
       <div
         onClick={() => setContactOpen(false)}
-        className={`fixed inset-0 z-[60] bg-background/75 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer [perspective:1000px] transition-opacity duration-600 ${
-          contactOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`fixed inset-0 z-[60] bg-background/75 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer [perspective:1000px] transition-opacity duration-600 ${contactOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
       >
         <style>{`
           .contact-card-3d {
@@ -486,9 +485,8 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
         `}</style>
         <div
           onClick={(e) => e.stopPropagation()}
-          className={`bg-card border-2 border-foreground p-8 max-w-md w-full relative cursor-default shadow-2xl contact-card-3d ${
-            contactOpen ? 'contact-card-open' : 'contact-card-closed'
-          }`}
+          className={`bg-card border-2 border-foreground p-8 max-w-md w-full relative cursor-default shadow-2xl contact-card-3d ${contactOpen ? 'contact-card-open' : 'contact-card-closed'
+            }`}
         >
           <button
             onClick={() => setContactOpen(false)}
@@ -500,7 +498,7 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
           <div className="flex flex-col gap-4 text-sm font-mono text-muted-foreground">
             <div>
               <span className="text-accent text-xs font-bold block mb-1">EMAIL</span>
-              <a href="mailto:michael@arch.com" className="text-foreground hover:underline">michael@arch.com</a>
+              <a href="mailto:medhatmichael9@gmail.com" className="text-foreground hover:underline">medhatmichael9@gmail.com</a>
             </div>
             <div>
               <span className="text-accent text-xs font-bold block mb-1">OFFICES</span>
