@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import StaggeredMenu from '@/components/StaggeredMenu';
 import GooeyNav from '@/components/GooeyNav';
 import VerticalCutReveal from '@/components/fancy/text/vertical-cut-reveal';
@@ -11,23 +11,6 @@ import { Logo } from '@/components/Logo';
 import TrailingImage from '@/components/animata/image/trailing-image';
 
 const backgroundImages = ['/bg.jpg', '/bg2.jpg', '/bg3.jpg'];
-
-const projectImages = [
-  "/projects/bathrooms/bathroom-1/image-1.jpg",
-  "/projects/bathrooms/bathroom-1/image-2.jpg",
-  "/projects/bathrooms/bathroom-1/image-3.jpg",
-  "/projects/bathrooms/bathroom-1/image-4.jpg",
-  "/projects/bathrooms/bathroom-1/bathroom-1.jpg",
-  "/projects/bedrooms/bedroom-1/bedroom-1.jpg",
-  "/projects/bedrooms/bedroom-1/image-1.jpg",
-  "/projects/bedrooms/bedroom-1/image-2.jpg",
-  "/projects/bedrooms/bedroom-1/image-3.jpg",
-  "/projects/bedrooms/bedroom-1/image-4.jpg",
-  "/projects/apartments/apartment-1/apartment-1.jpg",
-  "/projects/apartments/apartment-1/image-1.jpg",
-  "/projects/apartments/apartment-2/apartment-2.jpg",
-  "/projects/apartments/apartment-2/image-1.jpg",
-];
 
 const InstagramIcon = ({ size = 16 }: { size?: number }) => (
   <svg
@@ -92,6 +75,25 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
   const [theme, setTheme] = useState<'charcoal' | 'navy'>('charcoal');
   const [hoveredProjectTitle, setHoveredProjectTitle] = useState<string | null>(null);
   const categoriesContainerRef = useRef<HTMLDivElement>(null);
+
+  const dynamicProjectImages = useMemo(() => {
+    const images: string[] = [];
+    Object.values(projectsData).forEach((projects) => {
+      projects.forEach((project) => {
+        if (project.imagePath && project.imagePath !== '/placeholder.jpg') {
+          images.push(project.imagePath);
+        }
+        if (project.gallery && Array.isArray(project.gallery)) {
+          project.gallery.forEach((img) => {
+            if (img && img !== '/placeholder.jpg') {
+              images.push(img);
+            }
+          });
+        }
+      });
+    });
+    return images.length > 0 ? images : backgroundImages;
+  }, [projectsData]);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as 'charcoal' | 'navy';
@@ -335,7 +337,7 @@ export default function HomeClient({ projectsData }: HomeClientProps) {
 
         {/* Dynamic Center Arena (Massive Category Links) */}
         <TrailingImage
-          images={projectImages}
+          images={dynamicProjectImages}
           maxTrailZIndex={5}
           className="flex-1 flex flex-col justify-center gap-6 md:gap-8"
         >
