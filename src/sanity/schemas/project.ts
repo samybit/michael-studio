@@ -44,6 +44,9 @@ export default defineType({
       name: 'gallery',
       title: 'Gallery Images',
       type: 'array',
+      options: {
+        layout: 'grid',
+      },
       of: [
         defineArrayMember({
           type: 'image',
