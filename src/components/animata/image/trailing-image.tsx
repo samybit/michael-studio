@@ -11,6 +11,7 @@ import {
   useImperativeHandle,
   useLayoutEffect,
   useRef,
+  useState,
 } from "react";
 
 import { useMousePosition } from "@/hooks/use-mouse-position";
@@ -40,6 +41,7 @@ interface AnimatedImageProps {
 
 const AnimatedImage = forwardRef<AnimatedImageRef, AnimatedImageProps>(
   ({ src, onActivityChange }, ref) => {
+    const [imageSrc, setImageSrc] = useState<string | null>(null);
     const controls = useAnimation();
     const isRunning = useRef(false);
     const onActivityChangeRef = useRef(onActivityChange);
@@ -60,6 +62,7 @@ const AnimatedImage = forwardRef<AnimatedImageRef, AnimatedImageProps>(
         newX: number;
         newY: number;
       }) => {
+        setImageSrc(src);
         controls.stop();
 
         controls.set({
@@ -106,7 +109,7 @@ const AnimatedImage = forwardRef<AnimatedImageRef, AnimatedImageProps>(
       <motion.img
         initial={{ opacity: 0, scale: 1 }}
         animate={controls}
-        src={src}
+        src={imageSrc || undefined}
         alt=""
         aria-hidden
         draggable={false}
